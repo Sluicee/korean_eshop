@@ -283,6 +283,11 @@ body {
   .input-radio input[type="radio"]:checked~.caption, .input-checkbox input[type="checkbox"]:checked~.caption {
     max-height: 800px;
   }
+
+  /* category input dis */
+  .cat_new_name_disabled {
+    display: none;
+  }
   
   /*----------------------------*\
       Section

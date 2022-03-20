@@ -20,8 +20,15 @@ Route::get('/catalog', 'App\Http\Controllers\MainController@openCatalog')->name(
 
 Route::name('admin.')->group(function () {
     Route::get('/admin', 'App\Http\Controllers\AdminController@openAdmin')->name('panel');
-    Route::get('/admin/catalog', 'App\Http\Controllers\AdminController@openAdminUploadProduct')->name('editCatalog');
-    Route::post('/admin/catalog/productSubmit', 'App\Http\Controllers\AdminController@productSubmit')->name('productSubmit');
+
+    Route::get('/admin/catalog', 'App\Http\Controllers\AdminController@openAdminEditProducts')->name('editProducts');
+    Route::get('/admin/catalog/new', 'App\Http\Controllers\AdminController@openAdminUploadProduct')->name('uploadProduct');
+    Route::post('/admin/catalog/new/productSubmit', 'App\Http\Controllers\AdminController@productSubmit')->name('productSubmit');
+
+    Route::get('/admin/categories', 'App\Http\Controllers\AdminController@openAdminEditCategories')->name('editCategories');
+    Route::post('/admin/categories/categorySubmit', 'App\Http\Controllers\AdminController@categorySubmit')->name('categorySubmit');
+    Route::get('/admin/categories/{id}/categoryDelete', 'App\Http\Controllers\AdminController@categoryDelete')->name('categoryDelete');
+    Route::get('/admin/categories/{id}/categoryUpdate', 'App\Http\Controllers\AdminController@categoryUpdate')->name('categoryUpdate');
 });
 
 

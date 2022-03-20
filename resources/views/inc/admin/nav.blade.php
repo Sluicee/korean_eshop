@@ -7,8 +7,8 @@
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
                 <li><a href="{{ route('admin.panel') }}">Главная</a></li>
-                <li><a href="{{ route('admin.editCatalog') }}">Каталог</a></li>
-                <li><a href="#">Категории</a></li>
+                <li><a href="{{ route('admin.uploadProduct') }}">Редактировать каталог</a></li>
+                <li><a href="{{ route('admin.editCategories') }}">Редактировать категории</a></li>
             </ul>
             <!-- /NAV -->
         </div>

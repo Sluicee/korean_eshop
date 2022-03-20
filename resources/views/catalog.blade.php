@@ -257,7 +257,7 @@
                                     </div>
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category">{{ $item->category }}</p>
+                                    <p class="product-category">{{ App\Models\Category::find($item->category)->name }}</p>
                                     <h3 class="product-name"><a href="#">{{ $item->name }}</a></h3>
                                     <h4 class="product-price">{{ $item->price }}р.</h4>
                                     <div class="product-rating">

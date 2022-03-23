@@ -38,6 +38,7 @@
 <body>
     @include('inc.admin.header')
     @include('inc.admin.nav')
+    @include('inc.messages')
     @yield('content')
     @include('inc.admin.footer')
 
@@ -47,5 +48,46 @@
 	<script src="/js/nouislider.min.js"></script>
 	<script src="/js/jquery.zoom.min.js"></script>
 	<script src="/js/app.js"></script>
+	<script>
+		let pages = document.querySelectorAll('.edit_category');
+        let editButton = document.querySelectorAll('.edit_btn');
+        let cancelButton = document.querySelectorAll('.cancel_btn');
+        
+        // for (var i = 0; i < editButton.length; i++) {
+        //     editButton[i].addEventListener("click", function () {
+        //         pages.forEach(function(field) {
+        //             field.classList.toggle('cat_new_name_disabled');
+        //         });
+        //     });
+        // }
+
+        // for (var i = 0; i < cancelButton.length; i++) {
+        //     cancelButton[i].addEventListener("click", function () {
+        //         pages.forEach(function(field) {
+        //             field.classList.toggle('cat_new_name_disabled');
+        //         });
+        //     });
+        // }
+
+        $('.edit_btn').click(function() {
+			var element = $(this).parent('tr')
+			console.log(element);
+            $('.edit_category').toggleClass('cat_new_name_disabled');
+        })
+
+		$('.cancel_btn').click(function() {
+			console.log($(this).parents()[1]);
+            $('.edit_category').toggleClass('cat_new_name_disabled');
+            document.getElementById('cat_edit_form').reset();
+        })
+
+        // const cat_new_name = document.querySelector('.cat_new_name');
+        // const endInput = document.getElementById('new_cat_name');
+
+        // cat_new_name.oninput = function() {
+        //     endInput.value = cat_new_name.value;
+        // };
+	</script>
+	
 </body>
 </html>

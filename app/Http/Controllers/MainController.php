@@ -8,7 +8,8 @@ use App\Models\Product;
 class MainController extends Controller
 {
     public function home() {
-        return view('home');
+        $data = Product::with('images')->get();
+        return view('home', ['data' => $data]);
     }
 
     public function openCatalog(){

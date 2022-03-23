@@ -28,7 +28,7 @@ Route::name('admin.')->group(function () {
     Route::get('/admin/categories', 'App\Http\Controllers\AdminController@openAdminEditCategories')->name('editCategories');
     Route::post('/admin/categories/categorySubmit', 'App\Http\Controllers\AdminController@categorySubmit')->name('categorySubmit');
     Route::get('/admin/categories/{id}/categoryDelete', 'App\Http\Controllers\AdminController@categoryDelete')->name('categoryDelete');
-    Route::get('/admin/categories/{id}/categoryUpdate', 'App\Http\Controllers\AdminController@categoryUpdate')->name('categoryUpdate');
+    Route::get('/admin/categories//categoryUpdate', 'App\Http\Controllers\AdminController@categoryUpdate')->name('categoryUpdate');
 });
 
 

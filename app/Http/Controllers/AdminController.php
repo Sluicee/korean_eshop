@@ -56,21 +56,35 @@ class AdminController extends Controller
     }
 
     public function categorySubmit(Request $request) {
+
+        if(Category::where('name', $request->name)->exists()) {
+            return redirect()->to(route('admin.editCategories'))->withErrors([
+                'categorySubmitError' => 'Категория уже существует'
+            ]);
+        }
+
         $category = new Category;
         $category->name = $request->name;
         $category->save();
-        return redirect()->route('admin.editCategories');
+        return redirect()->route('admin.editCategories')->with('success', 'Категория добавлена');
     }
     
     public function categoryDelete($id) {
         $category = Category::find($id)->delete();
-        return redirect()->route('admin.editCategories');
+        return redirect()->route('admin.editCategories')->with('success', 'Категория удалена');
     }
 
-    public function categoryUpdate($id, Request $request) {
-        $category = Category::find($id);
-        $category->name = $request->new_cat_name;
-        $category->save();
+    public function categoryUpdate(Request $request) {
+        $category = Category::pluck("name", "id");
+        $counter = 0;
+        foreach($request->new_cat_name as $edit){
+            if (array_slice($category->toArray(), $counter, 1)[0] != $edit){
+                $editedCategory = Category::find(array_search(array_slice($category->toArray(), $counter, 1)[0], $category->toArray()));
+                $editedCategory->name = $edit;
+                $editedCategory->save();
+            }
+            $counter++;
+        }
         return redirect()->route('admin.editCategories');
     }
 }

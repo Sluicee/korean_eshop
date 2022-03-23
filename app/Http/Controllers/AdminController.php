@@ -41,6 +41,9 @@ class AdminController extends Controller
         $product->composition = $request->composition;
         $product->save();
         $files = $request->file('images');
+
+        //TODO: сделать картинки одного формата
+
         foreach ($files as $imagefile) {
             $image = new Image;
             $image->url = substr($imagefile->store('public/image') , 13);

@@ -11,5 +11,10 @@ class Category extends Model
     {
         return $this->hasMany('App\Models\Product', 'category');
     }
+
+    public function images()
+    {
+        return $this->hasManyThrough('App\Models\Image', 'App\Models\Product', 'category');
+    }
     use HasFactory;
 }

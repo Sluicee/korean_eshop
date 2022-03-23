@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\MainController@home')->name('home');
 Route::get('/catalog', 'App\Http\Controllers\MainController@openCatalog')->name('catalog');
+Route::get('/catalog/{category}/product{id}', 'App\Http\Controllers\MainController@openProduct')->name('open-product');
 
 // Admin Panel
 
@@ -22,6 +23,7 @@ Route::name('admin.')->group(function () {
     Route::get('/admin', 'App\Http\Controllers\AdminController@openAdmin')->name('panel');
 
     Route::get('/admin/catalog', 'App\Http\Controllers\AdminController@openAdminEditProducts')->name('editProducts');
+    // TODO: добавить view со всеми предметами и с кнопкой на этот рут ↓
     Route::get('/admin/catalog/new', 'App\Http\Controllers\AdminController@openAdminUploadProduct')->name('uploadProduct');
     Route::post('/admin/catalog/new/productSubmit', 'App\Http\Controllers\AdminController@productSubmit')->name('productSubmit');
 

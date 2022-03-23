@@ -2245,15 +2245,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
         dots: true
       }
     }]
-  }); // Product img zoom
-
-  var zoomMainProduct = document.getElementById('product-main-img');
-
-  if (zoomMainProduct) {
-    $('#product-main-img .product-preview').zoom();
-  } /////////////////////////////////////////
+  }); /////////////////////////////////////////
   // Input number
-
 
   $('.input-number').each(function () {
     var $this = $(this),

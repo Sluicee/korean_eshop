@@ -11,11 +11,10 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="breadcrumb-tree">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">All Categories</a></li>
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Headphones</a></li>
-                    <li class="active">Product name goes here</li>
+                    <li><a href="{{route('home')}}">Главная</a></li>
+                    <li><a href="{{route('catalog')}}">Каталог</a></li>
+                    <li><a href="#">{{App\Models\Category::find($product->category)->name}}</a></li>
+                    <li class="active">{{$product->name}}</li>
                 </ul>
             </div>
         </div>
@@ -84,22 +83,7 @@
                     <p>{{$product->description}}</p>
 
                     <form action="{{route('cart.store', $product->id)}}" method="post">
-                        @csrf
-                        {{-- <div class="product-options">
-                            <label>
-                                Size
-                                <select class="input-select">
-                                    <option value="0">X</option>
-                                </select>
-                            </label>
-                            <label>
-                                Color
-                                <select class="input-select">
-                                    <option value="0">Red</option>
-                                </select>
-                            </label>
-                        </div> --}}
-    
+                        @csrf    
                         <div class="add-to-cart">
                             <div class="qty-label">
                                 Количество

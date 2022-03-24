@@ -29,7 +29,8 @@ class CartController extends Controller
             session()->put('cart', $cart);
             return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
-        elseif ($request->qty_to_cart <= 0) {
+        elseif ($request->qty_to_cart <= 0 and $request->qty_to_cart != null) {
+            dd($cart);
             return  redirect()->back();
         }
         // if cart not empty then check if this product exist then increment quantity
@@ -38,14 +39,25 @@ class CartController extends Controller
             session()->put('cart', $cart);
             return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
-        // if item not exist in cart then add to cart with quantity = 1
-        $cart[$id] = [
-            "name" => $product->name,
-            "quantity" => $request->qty_to_cart,
-            "price" => $product->price,
-            "sale" => $product->sale,
-            "image" => $product->images[0]->url
-        ];
+        // if item not exist in cart then add to cart with quantity
+        if ($request->qty_to_cart == null) {
+            $cart[$id] = [
+                "name" => $product->name,
+                "quantity" => 1,
+                "price" => $product->price,
+                "sale" => $product->sale,
+                "image" => $product->images[0]->url
+            ];
+        }
+        else {
+            $cart[$id] = [
+                "name" => $product->name,
+                "quantity" => $request->qty_to_cart,
+                "price" => $product->price,
+                "sale" => $product->sale,
+                "image" => $product->images[0]->url
+            ];
+        }
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
@@ -56,11 +68,10 @@ class CartController extends Controller
         {
             $cart = session()->get('cart');
             $cart[$request->id]["quantity"] = $request->quantity;
-            dd($cart);
             session()->put('cart', $cart);
             session()->flash('success', 'Cart updated successfully');
         }
-        dd($request);
+        
     }
 
     public function removeCart(Request $request)

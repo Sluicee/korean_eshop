@@ -5,7 +5,7 @@
     <div class="section">
         <div class="container">
             <div class="row">
-                <form enctype="multipart/form-data" action="{{ route('admin.productSubmit') }}" method="post" class="form ">
+                <form enctype="multipart/form-data" action="{{ route('admin.productSubmit') }}" method="post" class="form col-md-4 col-xs-6">
                     @csrf
                     <div class="form-group">
                         <label for="name">Name</label>

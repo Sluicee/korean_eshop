@@ -2170,10 +2170,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
   $('.menu-toggle > a').on('click', function (e) {
     e.preventDefault();
     $('#responsive-nav').toggleClass('active');
-  }); // Fix cart dropdown from closing
-
-  $('.cart-dropdown').on('click', function (e) {
-    e.stopPropagation();
   }); /////////////////////////////////////////
   // Products Slick
 
@@ -2258,12 +2254,14 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
       value = value < 1 ? 1 : value;
       $input.val(value);
       $input.change();
+      $input.attr("value", value);
       updatePriceSlider($this, value);
     });
     up.on('click', function () {
       var value = parseInt($input.val()) + 1;
       $input.val(value);
       $input.change();
+      $input.attr("value", value);
       updatePriceSlider($this, value);
     });
   });

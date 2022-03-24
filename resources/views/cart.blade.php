@@ -67,7 +67,9 @@
                     <tr>
                         <td colspan="6" class="text-right">
                             <a href="{{ route('home') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Продолжить покупки</a>
-                            <a href="{{ route('checkout') }}" class="btn btn-success"><i class="fa fa-angle-left"></i> Продолжить покупки</a>
+                            @if (session('cart') != [])
+                                <a href="{{ route('checkout') }}" class="btn btn-success"><i class="fa fa-angle-left"></i> Перейти к оформлению</a>
+                            @endif
                         </td>
                     </tr>
                 </tfoot>

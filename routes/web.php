@@ -17,7 +17,7 @@ Route::get('/', 'App\Http\Controllers\MainController@home')->name('home');
 Route::get('/catalog', 'App\Http\Controllers\MainController@openCatalog')->name('catalog');
 Route::get('/catalog/{category}/product{id}', 'App\Http\Controllers\ProductController@openProduct')->name('open-product');
 
-Route::get('/checkout', 'App\Http\Controllers\MainController@openProduct')->name('checkout');
+Route::get('/checkout', 'App\Http\Controllers\MainController@openCheckOut')->name('checkout');
 
 Route::name('cart.')->group(function () {
     Route::get('/cart', 'App\Http\Controllers\MainController@cartList')->name('list');

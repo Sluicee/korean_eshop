@@ -9,10 +9,10 @@
         <!-- row -->
         <div class="row">
             <div class="col-md-12">
-                <h3 class="breadcrumb-header">Checkout</h3>
+                <h3 class="breadcrumb-header">Оформление заказа</h3>
                 <ul class="breadcrumb-tree">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">Checkout</li>
+                    <li><a href="{{route('home')}}">Главная</a></li>
+                    <li class="active">Оформление заказа</li>
                 </ul>
             </div>
         </div>
@@ -126,30 +126,40 @@
             <!-- Order Details -->
             <div class="col-md-5 order-details">
                 <div class="section-title text-center">
-                    <h3 class="title">Your Order</h3>
+                    <h3 class="title">Ваш заказ</h3>
                 </div>
                 <div class="order-summary">
                     <div class="order-col">
-                        <div><strong>PRODUCT</strong></div>
-                        <div><strong>TOTAL</strong></div>
+                        <div><strong>Товар</strong></div>
+                        <div><strong>Стоимость</strong></div>
                     </div>
                     <div class="order-products">
-                        <div class="order-col">
-                            <div>1x Product Name Goes Here</div>
-                            <div>$980.00</div>
-                        </div>
-                        <div class="order-col">
-                            <div>2x Product Name Goes Here</div>
-                            <div>$980.00</div>
-                        </div>
+                        @php $total = 0 @endphp
+                        @if (session('cart'))
+                            @foreach(session('cart') as $id => $details)
+                                @if ($details['sale']!=0)
+                                    @php $total += $details['price'] * ($details['sale'] / 100) * $details['quantity'] @endphp
+                                @else
+                                    @php $total += $details['price'] * $details['quantity'] @endphp
+                                @endif
+                                <div class="order-col">
+                                    <div>{{$details['quantity']}}x {{$details['name']}}</div>
+                                    @if ($details['sale']!=0)
+                                        <div>{{ $details['price'] * ($details['sale'] / 100) * $details['quantity'] }} руб.</div>
+                                    @else
+                                        <div>{{ $details['price'] * $details['quantity'] }} руб.</div>
+                                    @endif
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                     <div class="order-col">
-                        <div>Shiping</div>
-                        <div><strong>FREE</strong></div>
+                        <div>Доставка</div>
+                        <div><strong>БЕСПЛАТНО</strong></div>
                     </div>
                     <div class="order-col">
-                        <div><strong>TOTAL</strong></div>
-                        <div><strong class="order-total">$2940.00</strong></div>
+                        <div><strong>ИТОГО</strong></div>
+                        <div><strong class="order-total">{{$total}} руб.</strong></div>
                     </div>
                 </div>
                 <div class="payment-method">

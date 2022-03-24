@@ -109,6 +109,7 @@ require('./bootstrap');
 			value = value < 1 ? 1 : value;
 			$input.val(value);
 			$input.change();
+			$input.attr("value",value);
 			updatePriceSlider($this , value)
 		})
 
@@ -116,6 +117,7 @@ require('./bootstrap');
 			var value = parseInt($input.val()) + 1;
 			$input.val(value);
 			$input.change();
+			$input.attr("value",value);
 			updatePriceSlider($this , value)
 		})
 	});

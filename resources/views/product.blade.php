@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title-block')Product name goes here @endsection
+@section('title-block'){{$product->name}} @endsection
 
 @section('content')
 
@@ -83,32 +83,35 @@
                     </div>
                     <p>{{$product->description}}</p>
 
-                    <div class="product-options">
-                        <label>
-                            Size
-                            <select class="input-select">
-                                <option value="0">X</option>
-                            </select>
-                        </label>
-                        <label>
-                            Color
-                            <select class="input-select">
-                                <option value="0">Red</option>
-                            </select>
-                        </label>
-                    </div>
-
-                    <div class="add-to-cart">
-                        <div class="qty-label">
-                            Qty
-                            <div class="input-number">
-                                <input type="number">
-                                <span class="qty-up">+</span>
-                                <span class="qty-down">-</span>
+                    <form action="{{route('cart.store', $product->id)}}" method="post">
+                        @csrf
+                        {{-- <div class="product-options">
+                            <label>
+                                Size
+                                <select class="input-select">
+                                    <option value="0">X</option>
+                                </select>
+                            </label>
+                            <label>
+                                Color
+                                <select class="input-select">
+                                    <option value="0">Red</option>
+                                </select>
+                            </label>
+                        </div> --}}
+    
+                        <div class="add-to-cart">
+                            <div class="qty-label">
+                                Количество
+                                <div class="input-number">
+                                    <input type="number" name='qty_to_cart' value='1'>
+                                    <span class="qty-up">+</span>
+                                    <span class="qty-down">-</span>
+                                </div>
                             </div>
+                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
                         </div>
-                        <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                    </div>
+                    </form>
 
                     <ul class="product-btns">
                         <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>

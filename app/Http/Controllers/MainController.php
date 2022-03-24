@@ -18,9 +18,9 @@ class MainController extends Controller
         return view('catalog', ['data' => $data]);
     }
 
-    public function openProduct($category, $product_id){
-        $data = Product::with('images')->where('id',$product_id)->first();
-        $sameProducts = Category::with('images')->where('name', $category)->get();
-        return view('product', ['product' => $data, 'sameProducts' => $sameProducts]);
+    public function cartList()
+    {
+        return view('cart');
     }
+
 }

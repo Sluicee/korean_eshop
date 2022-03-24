@@ -60,12 +60,12 @@
                         <!-- /Wishlist -->
                         <!-- Cart -->
                         <div class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                            <a href="{{route('cart.list')}}">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Your Cart</span>
                                 <div class="qty">3</div>
                             </a>
-                            <div class="cart-dropdown">
+                            {{-- <div class="cart-dropdown">
                                 <div class="cart-list">
                                     <div class="product-widget">
                                         <div class="product-img">
@@ -97,7 +97,7 @@
                                     <a href="#">View Cart</a>
                                     <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <!-- /Cart -->
 

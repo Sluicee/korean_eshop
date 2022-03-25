@@ -27,6 +27,12 @@ Route::name('cart.')->group(function () {
     Route::post('/cart/clear', 'App\Http\Controllers\CartController@clearAllCart')->name('clear');
 });
 
+Route::name('wishlist.')->group(function () {
+    Route::get('/wishlist', 'App\Http\Controllers\MainController@wishlistList')->name('list');
+    Route::get('/wishlist/store/{id}', 'App\Http\Controllers\WishlistController@addToWishlist')->name('store');
+    Route::delete('/wishlist/remove', 'App\Http\Controllers\WishlistController@removeWishlist')->name('remove');
+});
+
 // Admin Panel
 
 Route::name('admin.')->group(function () {

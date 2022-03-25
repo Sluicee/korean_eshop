@@ -15,13 +15,8 @@
             </div>
         </div>
         <div class="product-body">
-            @if (Request::route()->getName() == "open-product")
-                <p class="product-category">{{ $item->name }}</p>
-                <h3 class="product-name"><a href="{{route('open-product', [$item->name, $item->id])}}">{{ $item->name }}</a></h3>
-            @else
-                <p class="product-category">{{ App\Models\Category::find($item->category)->name }}</p>
-                <h3 class="product-name"><a href="{{route('open-product', [App\Models\Category::find($item->category)->name, $item->id])}}">{{ $item->name }}</a></h3>
-            @endif
+            <p class="product-category">{{ App\Models\Category::find($item->category)->name }}</p>
+            <h3 class="product-name"><a href="{{route('open-product', [App\Models\Category::find($item->category)->name, $item->id])}}">{{ $item->name }}</a></h3>
             @if ($item->sale != 0)
                 <h4 class="product-price">{{$item->price * ($item->sale / 100)}} руб.  <del class="product-old-price">{{$item->price}} руб.</del></h3>
             @else

@@ -98,8 +98,7 @@
                     </form>
 
                     <ul class="product-btns">
-                        <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
-                        <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
+                        <li><a href="{{route('wishlist.store', $product->id)}}"><i class="fa fa-heart-o"></i> добавить в желаемое</a></li>
                     </ul>
 
                     <ul class="product-links">
@@ -345,9 +344,25 @@
                 </div>
             </div>
 
-            @foreach ($sameProducts as $item)
-            @include('inc.product_card')
-            @endforeach
+            {{-- TODO: --}}
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="products-tabs">
+                        <!-- tab -->
+                        <div id="tab1" class="tab-pane active">
+                            <div class="products-slick" data-nav="#slick-nav-1">
+                                @foreach ($sameProducts as $item)
+                                    @if ($item->category == $product->category and $item->id != $product->id)
+                                        @include('inc.product_card')
+                                    @endif
+                                @endforeach 
+                            </div>
+                            <div id="slick-nav-1" class="products-slick-nav"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <!-- /row -->

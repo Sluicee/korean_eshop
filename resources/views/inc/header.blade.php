@@ -50,10 +50,16 @@
                     <div class="header-ctn">
                         <!-- Wishlist -->
                         <div>
-                            <a href="#">
+                            <a href="{{route('wishlist.list')}}">
                                 <i class="fa fa-heart-o"></i>
                                 <span>Желаемое</span>
-                                <div class="qty">2</div>
+                                <div class="qty">
+                                    @if (session('wishlist'))
+                                        {{count(session('wishlist'))}}
+                                    @else
+                                        0
+                                    @endif
+                                </div>
                             </a>
                         </div>
                         <!-- /Wishlist -->

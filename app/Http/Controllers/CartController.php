@@ -30,7 +30,6 @@ class CartController extends Controller
             return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
         elseif ($request->qty_to_cart <= 0 and $request->qty_to_cart != null) {
-            dd($cart);
             return  redirect()->back();
         }
         // if cart not empty then check if this product exist then increment quantity

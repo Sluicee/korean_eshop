@@ -23,6 +23,11 @@ class MainController extends Controller
         return view('cart');
     }
 
+    public function wishlistList()
+    {
+        return view('wishlist');
+    }
+
     public function openCheckOut()
     {
         return view('checkout');

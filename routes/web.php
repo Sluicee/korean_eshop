@@ -39,7 +39,10 @@ Route::name('admin.')->group(function () {
     Route::get('/admin', 'App\Http\Controllers\AdminController@openAdmin')->name('panel');
 
     Route::get('/admin/catalog', 'App\Http\Controllers\AdminController@openAdminEditProducts')->name('editProducts');
-    // TODO: добавить view со всеми предметами и с кнопкой на этот рут ↓
+    Route::get('/admin/catalog/product{id}/remove', 'App\Http\Controllers\AdminController@removeProduct')->name('removeProduct');
+    Route::get('/admin/catalog/product{id}/edit', 'App\Http\Controllers\AdminController@openEditProduct')->name('editProduct');
+    Route::post('/admin/catalog/product{id}/edit/submit', 'App\Http\Controllers\AdminController@updateProduct')->name('editProductSubmit');
+
     Route::get('/admin/catalog/new', 'App\Http\Controllers\AdminController@openAdminUploadProduct')->name('uploadProduct');
     Route::post('/admin/catalog/new/productSubmit', 'App\Http\Controllers\AdminController@productSubmit')->name('productSubmit');
 

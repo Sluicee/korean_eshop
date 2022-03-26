@@ -20,14 +20,15 @@ return new class extends Migration
             $table->float('price')->default(0);
             $table->integer('sale')->default(0);
             $table->boolean('stock')->default(false);
-            $table->longText('description')->default('text');
-            $table->integer('mass')->default(0);
+            $table->longText('description');
+            $table->longText('short_description');
+            $table->string('mass')->default("0");
             $table->string('taste')->nullable();
-            $table->integer('code')->default(0);
-            $table->integer('expiration_date')->default(0);
-            $table->text('storage_conditions')->default("-");
-            $table->integer('energy_value')->default(0);
-            $table->longText('composition')->default("-");
+            $table->string('code')->default("0");
+            $table->string('expiration_date')->default("0");
+            $table->text('storage_conditions');
+            $table->string('energy_value')->default("0");
+            $table->longText('composition');
             $table->timestamps();
         });
     }

@@ -23,19 +23,17 @@
         e.preventDefault();
   
         var ele = $(this);
-  
-        if(confirm("Are you sure want to remove?")) {
-            $.ajax({
-                url: '{{ route('cart.remove') }}',
-                method: "DELETE",
-                data: {
-                    _token: '{{ csrf_token() }}', 
-                    id: ele.parents("tr").attr("data-id")
-                },
-                success: function (response) {
-                    window.location.reload();
-                }
-            });
-        }
+
+        $.ajax({
+            url: '{{ route('cart.remove') }}',
+            method: "DELETE",
+            data: {
+                _token: '{{ csrf_token() }}', 
+                id: ele.parents("tr").attr("data-id")
+            },
+            success: function (response) {
+                window.location.reload();
+            }
+        });
     });
 </script>

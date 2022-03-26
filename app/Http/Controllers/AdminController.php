@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\CartController;
 use App\Models\Product;
 use App\Models\Image;
 use App\Models\Category;
@@ -14,6 +15,11 @@ class AdminController extends Controller
         return view("admin_panel.admin");
     }
 
+    public function openAdminEditProducts() {
+        $data = Product::all();
+        return view("admin_panel.edit_products", ['products' => $data]);
+    }
+
     public function openAdminUploadProduct() {
         $data = Category::all();
         return view("admin_panel.upload_product", ['categories' => $data]);
@@ -22,7 +28,8 @@ class AdminController extends Controller
     public function productSubmit(Request $request) {
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'description' => 'required|string|max:855',
+            'description' => 'required',
+            'images' => 'required'
         ]);
         $product = new Product;
         $product->name = $request->name;
@@ -32,6 +39,7 @@ class AdminController extends Controller
         $product->sale = $request->sale;
         $product->stock = $request->stock ? true : false;
         $product->description = $request->description;
+        $product->short_description = $request->short_description;
         $product->mass = $request->mass;
         $product->taste = $request->taste;
         $product->code = $request->code;
@@ -51,6 +59,65 @@ class AdminController extends Controller
             $image->save();
         }
         return redirect()->route('admin.uploadProduct');
+    }
+
+    public function removeProduct($id) {
+        $product = Product::find($id)->delete();
+        $request = new Request;
+        $request->id = $id;
+        $CartController = new CartController;
+        $CartController->removeCart($request);
+        return redirect()->route('admin.editProducts')->with('success', 'Продукт удален');
+    }
+
+    public function openEditProduct($id) {
+        $product = Product::find($id);
+        $categories = Category::all();
+        return view("admin_panel.edit_product", ['product' => $product, 'categories' => $categories]);
+    }
+
+    public function updateProduct($id, Request $request) {
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->category = $request->category;
+        $product->price = $request->price;
+        $product->sale = $request->sale;
+        $product->stock = $request->stock ? true : false;
+        $product->description = $request->description;
+        $product->short_description = $request->short_description;
+        $product->mass = $request->mass;
+        $product->taste = $request->taste;
+        $product->code = $request->code;
+        $product->expiration_date = $request->expiration_date;
+        $product->storage_conditions = $request->storage_conditions;
+        $product->energy_value = $request->energy_value;
+        $product->composition = $request->composition;
+        $product->save();
+        $files = $request->file('images');
+        // dd(Image::with('product')->where('product_id', '=', $id)->get());
+        if($request->replaceImages){
+            if ($files) {
+                $product->images()->delete();
+                foreach ($files as $imagefile) {
+                    $image = new Image;
+                    $image->url = substr($imagefile->store('public/image') , 13);
+                    $image->product_id = $product->id;
+                    $image->save();
+                }
+            }
+        }
+        else {
+            if ($files) {
+                foreach ($files as $imagefile) {
+                    $image = new Image;
+                    $image->url = substr($imagefile->store('public/image') , 13);
+                    $image->product_id = $product->id;
+                    $image->save();
+                }
+            }
+        }
+        return redirect()->route('admin.editProducts')->with('success', 'Продукт изменён');
     }
     
     public function openAdminEditCategories() {

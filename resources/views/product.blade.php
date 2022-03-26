@@ -13,7 +13,11 @@
                 <ul class="breadcrumb-tree">
                     <li><a href="{{route('home')}}">Главная</a></li>
                     <li><a href="{{route('catalog')}}">Каталог</a></li>
-                    <li><a href="#">{{App\Models\Category::find($product->category)->name}}</a></li>
+                    @if (App\Models\Category::find($product->category) != null)
+                        <li><a href="#">{{App\Models\Category::find($product->category)->name}}</a></li>
+                    @else
+                        <li><a href="#">-</a></li>
+                    @endif
                     <li class="active">{{$product->name}}</li>
                 </ul>
             </div>
@@ -80,7 +84,7 @@
                             <del class="product-price">Out Stock</del>
                         @endif
                     </div>
-                    <p>{{$product->description}}</p>
+                    <p>{!!$product->short_description!!}</p>
 
                     <form action="{{route('cart.store', $product->id)}}" method="post">
                         @csrf    
@@ -103,7 +107,11 @@
 
                     <ul class="product-links">
                         <li>Category:</li>
-                        <li><a href="#">{{App\Models\Category::find($product->category)->name}}</a></li>
+                        @if (App\Models\Category::find($product->category) != null)
+                            <li><a href="#">{{App\Models\Category::find($product->category)->name}}</a></li>
+                        @else
+                            <li><a href="#">-</a></li>
+                        @endif
                     </ul>
 
                 </div>
@@ -127,7 +135,7 @@
                         <div id="tab1" class="tab-pane fade in active">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>{{$product->description}} @if ($product->taste != null) <br> <b>Вкус:</b> {{$product->taste}}@endif <br><b>Масса Нетто, г:</b> {{$product->mass}}<br><b>Срок годности, м:</b> {{$product->expiration_date}}</p>
+                                    <p>{!!$product->description!!} @if ($product->taste != null) <br> <b>Вкус:</b> {{$product->taste}}@endif <br><b>Масса Нетто, г:</b> {{$product->mass}}<br><b>Срок годности, м:</b> {{$product->expiration_date}}</p>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +145,7 @@
                         <div id="tab2" class="tab-pane fade in">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p><b>Штрих-код:</b> {{$product->code}} <br><b>Условия хранения:</b> {{$product->storage_conditions}} <br><b>Энергетическая ценность, кДж:</b> {{$product->energy_value}}<br><b>Состав:</b> {{$product->composition}}</p>
+                                    <p><b>Штрих-код:</b> {{$product->code}} <br><b>Условия хранения:</b> {!!$product->storage_conditions!!} <br><b>Энергетическая ценность, кДж:</b> {{$product->energy_value}}<br><b>Состав:</b> {!!$product->composition!!}</p>
                                 </div>
                             </div>
                         </div>

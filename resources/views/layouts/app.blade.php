@@ -23,6 +23,9 @@
 
 		<!-- Font Awesome Icon -->
 		<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+		<!-- Rich Text Editor -->
+        <link rel="stylesheet" href="/css/trumbowyg.min.css">
         
         <!-- Custom stlylesheet -->
         <link type="text/css" rel="stylesheet" href="/css/app.css"/>
@@ -47,7 +50,13 @@
 	<script src="/js/slick.min.js"></script>
 	<script src="/js/nouislider.min.js"></script>
 	<script src="/js/jquery.zoom.min.js"></script>
+	<script src="/js/jquery.richtext.min.js"></script>
 	<script src="/js/app.js"></script>
+	<script src="/js/trumbowyg.min.js"></script>
+	<script>
+		$.trumbowyg.svgPath = '/css/icons.svg';
+		$('.richtextarea').trumbowyg();
+	</script>
 	@include('inc.scripts')
 </body>
 </html>

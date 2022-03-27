@@ -38,13 +38,18 @@
                 
             </div>
         </div>
-        <div class="add-to-cart">
+        @if ($item->stock)
             <form action="{{route('cart.store', $item->id)}}" method="post">
-                @csrf    
+            @csrf
                 <div class="add-to-cart">
-                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> в корзину</button>
                 </div>
             </form>
-        </div>
+        @else
+            <div class="add-to-cart">
+                <a href="{{route('wishlist.store', $item->id)}}"><button class="add-to-cart-btn"><i class="fa fa-heart-o"></i> в желаемое</button></a>
+            </div>
+        @endif
+        
     </div>
 </div>

@@ -63,8 +63,10 @@
                                         <i class="fa fa-star"></i>
                                     </div>
                                     <div class="product-btns">
-                                        
                                     </div>
+                                </div>
+                                <div class="add-to-cart" data-id={{$details['product_id']}}>
+                                    <button class="add-to-cart-btn remove-from-wishlist"><i class="fa fa-times"></i> удалить</button>
                                 </div>
                             </div>
                         </div>

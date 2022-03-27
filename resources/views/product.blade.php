@@ -86,24 +86,29 @@
                     </div>
                     <p>{!!$product->short_description!!}</p>
 
-                    <form action="{{route('cart.store', $product->id)}}" method="post">
-                        @csrf    
-                        <div class="add-to-cart">
-                            <div class="qty-label">
-                                Количество
-                                <div class="input-number">
-                                    <input type="number" name='qty_to_cart' value='1'>
-                                    <span class="qty-up">+</span>
-                                    <span class="qty-down">-</span>
+                    @if ($product->stock)
+                        <form action="{{route('cart.store', $product->id)}}" method="post">
+                            @csrf    
+                            <div class="add-to-cart">
+                                <div class="qty-label">
+                                    Количество
+                                    <div class="input-number">
+                                        <input type="number" name='qty_to_cart' value='1'>
+                                        <span class="qty-up">+</span>
+                                        <span class="qty-down">-</span>
+                                    </div>
                                 </div>
+                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> в корзину</button>
                             </div>
-                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                        </form>
+                        <ul class="product-btns">
+                            <li><a href="{{route('wishlist.store', $product->id)}}"><i class="fa fa-heart-o"></i> добавить в желаемое</a></li>
+                        </ul>
+                    @else 
+                        <div class="add-to-cart">
+                            <a href="{{route('wishlist.store', $product->id)}}"><button class="add-to-cart-btn"><i class="fa fa-heart-o"></i> в желаемое</button></a>
                         </div>
-                    </form>
-
-                    <ul class="product-btns">
-                        <li><a href="{{route('wishlist.store', $product->id)}}"><i class="fa fa-heart-o"></i> добавить в желаемое</a></li>
-                    </ul>
+                    @endif                    
 
                     <ul class="product-links">
                         <li>Category:</li>

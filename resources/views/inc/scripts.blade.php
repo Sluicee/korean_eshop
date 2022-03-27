@@ -36,4 +36,22 @@
             }
         });
     });
+
+    $(".remove-from-wishlist").click(function (e) {
+        e.preventDefault();
+  
+        var ele = $(this);
+
+        $.ajax({
+            url: '{{ route('wishlist.remove') }}',
+            method: "DELETE",
+            data: {
+                _token: '{{ csrf_token() }}', 
+                id: ele.parents("div").attr("data-id")
+            },
+            success: function (response) {
+                window.location.reload();
+            }
+        });
+    });
 </script>

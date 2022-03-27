@@ -37,6 +37,13 @@
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/bootstrap.bundle.min.js"></script>
+		<script src="/js/slick.min.js"></script>
+		<script src="/js/nouislider.min.js"></script>
+		<script src="/js/jquery.zoom.min.js"></script>
+		<script src="/js/trumbowyg.min.js"></script>
     </head>
 <body>
     @include('inc.admin.header')
@@ -45,16 +52,7 @@
     @yield('content')
     @include('inc.admin.footer')
 	
-    <script src="/js/jquery.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/slick.min.js"></script>
-	<script src="/js/nouislider.min.js"></script>
-	<script src="/js/jquery.zoom.min.js"></script>
+    
 	<script src="/js/app.js"></script>
-	<script src="/js/trumbowyg.min.js"></script>
-	<script>
-		$.trumbowyg.svgPath = '/css/icons.svg';
-		$('.richtextarea').trumbowyg();
-	</script>
 </body>
 </html>

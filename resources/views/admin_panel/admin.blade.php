@@ -2,5 +2,11 @@
 @section('title-block')Admin @endsection
 
 @section('content')
-    <h1>You are admin</h1>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <h1>This is Admin Dashboard. You must be privileged to be here !</h1>
+            </div>
+        </div>
+    </div>
 @endsection

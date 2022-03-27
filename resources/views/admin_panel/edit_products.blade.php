@@ -14,6 +14,7 @@
             <table id="cart" class="table table-hover table-bordered">
                 <thead>
                     <tr>
+                        <th >id</th>
                         <th >Товар</th>
                         <th  class="text-center">Изображение</th>
                         <th  class="text-center">Цена, руб.</th>
@@ -34,6 +35,7 @@
                     @foreach($products as $item)
                         @php $imageURL = $item->images[0]->url; @endphp
                         <tr data-id="{{ $item->id }}">
+                            <td data-th="ID" class="text-center">{{ $item->id }}</td>
                             <td data-th="Product">
                                 <p class="nomargin">{{ $item->name }}</p>
                                 @if (App\Models\Category::find($item->category) != null)

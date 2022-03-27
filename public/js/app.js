@@ -2170,7 +2170,10 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
   $('.menu-toggle > a').on('click', function (e) {
     e.preventDefault();
     $('#responsive-nav').toggleClass('active');
-  }); /////////////////////////////////////////
+  });
+  setTimeout(function () {
+    $("#snackbar").fadeOut();
+  }, 3000); /////////////////////////////////////////
   // Products Slick
 
   $('.products-slick').each(function () {

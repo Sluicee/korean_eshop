@@ -8,6 +8,8 @@ require('./bootstrap');
 		$('#responsive-nav').toggleClass('active');
 	})
 
+
+	setTimeout(function(){ $("#snackbar").fadeOut()}, 3000);
 	/////////////////////////////////////////
 
 	// Products Slick
@@ -89,6 +91,7 @@ require('./bootstrap');
       },
     ]
   });
+  
 
 	/////////////////////////////////////////
 

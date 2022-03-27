@@ -8,7 +8,13 @@
                 <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
             </ul>
             <ul class="header-links pull-right">
-                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+                @if (Auth::check())
+                    <li><a href="#"><i class="fa fa-user-o"></i> {{Auth::user()->name}}</a></li>
+                    <li><a href="{{route('user.logout')}}"><i class="fa fa-user-o"></i> Logout</a></li>
+                @else
+                    <li><a type="button" data-toggle="modal" data-target="#loginFormModal"><i class="fa fa-user-o"></i> Login</a></li>
+                    <li><a type="button" data-toggle="modal" data-target="#registerFormModal"><i class="fa fa-user-o"></i> Register</a></li>
+                @endif
             </ul>
         </div>
     </div>

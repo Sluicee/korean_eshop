@@ -8,7 +8,8 @@
                 <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
             </ul>
             <ul class="header-links pull-right">
-                <li><a href="#"><i class="fa fa-user-o"></i> Admin</a></li>
+                <li><a href="#"><i class="fa fa-user-o"></i> {{Auth::user()->name}}</a></li>
+                <li><a href="{{route('user.logout')}}"><i class="fa fa-user-o"></i> Выйти</a></li>
             </ul>
         </div>
     </div>

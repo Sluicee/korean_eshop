@@ -28,97 +28,53 @@
     <div class="container">
         <!-- row -->
         <div class="row">
-
+            <form action="{{route('pass_checkout')}}" method="post">
+            @csrf
             <div class="col-md-7">
                 <!-- Billing Details -->
                 <div class="billing-details">
                     <div class="section-title">
-                        <h3 class="title">Billing address</h3>
+                        <h3 class="title">Адрес доставки</h3>
                     </div>
                     <div class="form-group">
-                        <input class="input" type="text" name="first-name" placeholder="First Name">
+                        <input class="input" type="text" name="familiya" placeholder="Фамилия" required>
                     </div>
                     <div class="form-group">
-                        <input class="input" type="text" name="last-name" placeholder="Last Name">
+                        <input class="input" type="text" name="imya" placeholder="Имя" required>
                     </div>
                     <div class="form-group">
-                        <input class="input" type="email" name="email" placeholder="Email">
+                        <input class="input" type="text" name="otchestvo" placeholder="Отчество (при наличии)">
                     </div>
                     <div class="form-group">
-                        <input class="input" type="text" name="address" placeholder="Address">
+                        <input class="input" type="text" name="address" placeholder="Адрес" required>
                     </div>
                     <div class="form-group">
-                        <input class="input" type="text" name="city" placeholder="City">
+                        <input class="input" type="text" name="city" placeholder="Город" required>
                     </div>
                     <div class="form-group">
-                        <input class="input" type="text" name="country" placeholder="Country">
+                        <input class="input" type="text" name="country" placeholder="Страна" required>
                     </div>
                     <div class="form-group">
-                        <input class="input" type="text" name="zip-code" placeholder="ZIP Code">
+                        <input class="input" type="text" name="zipcode" placeholder="Почтовый индекс" required>
                     </div>
                     <div class="form-group">
-                        <input class="input" type="tel" name="tel" placeholder="Telephone">
+                        <input class="input" type="tel" name="tel" placeholder="Телефон" required>
                     </div>
                     <div class="form-group">
                         <div class="input-checkbox">
                             <input type="checkbox" id="create-account">
                             <label for="create-account">
                                 <span></span>
-                                Create Account?
+                                Сохранить адрес?
                             </label>
-                            <div class="caption">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                <input class="input" type="password" name="password" placeholder="Enter Your Password">
-                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- /Billing Details -->
 
-                <!-- Shiping Details -->
-                <div class="shiping-details">
-                    <div class="section-title">
-                        <h3 class="title">Shiping address</h3>
-                    </div>
-                    <div class="input-checkbox">
-                        <input type="checkbox" id="shiping-address">
-                        <label for="shiping-address">
-                            <span></span>
-                            Ship to a diffrent address?
-                        </label>
-                        <div class="caption">
-                            <div class="form-group">
-                                <input class="input" type="text" name="first-name" placeholder="First Name">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="last-name" placeholder="Last Name">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="email" name="email" placeholder="Email">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="address" placeholder="Address">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="city" placeholder="City">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="country" placeholder="Country">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="zip-code" placeholder="ZIP Code">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="tel" name="tel" placeholder="Telephone">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Shiping Details -->
-
                 <!-- Order notes -->
                 <div class="order-notes">
-                    <textarea class="input" placeholder="Order Notes"></textarea>
+                    <textarea name="notes" class="input" placeholder="Дополнительная информация"></textarea>
                 </div>
                 <!-- /Order notes -->
             </div>
@@ -167,30 +123,20 @@
                         <input type="radio" name="payment" id="payment-1">
                         <label for="payment-1">
                             <span></span>
-                            Direct Bank Transfer
+                            Онлайн
                         </label>
                         <div class="caption">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p>Вы будете перенаправлены на страницу оплаты</p>
                         </div>
                     </div>
                     <div class="input-radio">
                         <input type="radio" name="payment" id="payment-2">
                         <label for="payment-2">
                             <span></span>
-                            Cheque Payment
+                            При получении
                         </label>
                         <div class="caption">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                    <div class="input-radio">
-                        <input type="radio" name="payment" id="payment-3">
-                        <label for="payment-3">
-                            <span></span>
-                            Paypal System
-                        </label>
-                        <div class="caption">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p>Оплата курьеру при получении</p>
                         </div>
                     </div>
                 </div>
@@ -198,17 +144,17 @@
                     <input type="checkbox" id="terms">
                     <label for="terms">
                         <span></span>
-                        I've read and accept the <a href="#">terms & conditions</a>
+                        Я прочитал <a href="#">условия</a>
                     </label>
                 </div>
-                <a href="#" class="primary-btn order-submit">Place order</a>
+                <button type="submit" class="primary-btn order-submit">Заказать</button>
             </div>
             <!-- /Order Details -->
+        </form>
         </div>
         <!-- /row -->
     </div>
     <!-- /container -->
 </div>
 <!-- /SECTION -->
-
 @endsection

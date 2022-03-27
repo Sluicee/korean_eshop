@@ -43,6 +43,7 @@
 		<script src="/js/nouislider.min.js"></script>
 		<script src="/js/jquery.zoom.min.js"></script>
 		<script src="/js/trumbowyg.min.js"></script>
+		<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyCzoDgSrozntSbKZZHHMzrNbXZ7FMKoYk4&libraries=places"></script>
     </head>
 <body>
     @include('inc.header')

@@ -58,7 +58,7 @@ class AdminController extends Controller
             $image->product_id = $product->id;
             $image->save();
         }
-        return redirect()->route('admin.uploadProduct');
+        return redirect()->route('admin.uploadProduct')->with('success', 'Продукт добавлен');
     }
 
     public function removeProduct($id) {

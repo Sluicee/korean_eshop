@@ -11,7 +11,7 @@
             <a href="{{ route('admin.uploadProduct') }}" class="btn btn-success"><i class="fa fa-angle-left"></i> Добавить новый продукт</a>
         </div>
         <div class="row">
-            <table id="cart" class="table table-hover table-bordered">
+            <table id="cart" class="table table-hover table-bordered" style="overflow:hidden;">
                 <thead>
                     <tr>
                         <th >id</th>

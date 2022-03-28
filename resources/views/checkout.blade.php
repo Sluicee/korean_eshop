@@ -117,6 +117,7 @@
                         <div><strong>ИТОГО</strong></div>
                         <div><strong class="order-total">{{$total}} руб.</strong></div>
                     </div>
+                    <input type="hidden" name="total_price" value="{{$total}}">
                 </div>
                 <div class="payment-method">
                     <div class="input-radio">

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->text('cart');
+            $table->int('total_price');
             $table->string('familiya');
             $table->string('imya');
             $table->string('otchestvo')->nullable();
@@ -28,6 +29,8 @@ return new class extends Migration
             $table->text('notes')->nullable();
             $table->string('payment_id')->nullable();
             $table->string('status')->nullable()->default('в обработке');
+            $table->string('payment_status')->nullable()->default('Не оплачен');
+            $table->string('trackcode')->nullable();
             $table->timestamps();
         });
     }

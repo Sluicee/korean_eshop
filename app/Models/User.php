@@ -78,13 +78,8 @@ class User extends Authenticatable
         return false;
     }
 
-    /**
-     * Get all of the orders for the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function orders(): HasMany
+    public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany('App\Models\Order', 'user_id');
     }
 }

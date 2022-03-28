@@ -9,7 +9,7 @@
             </ul>
             <ul class="header-links pull-right">
                 @if (Auth::check())
-                    <li><a href="#"><i class="fa fa-user-o"></i> {{Auth::user()->name}}</a></li>
+                    <li><a href="{{route('user.profile')}}"><i class="fa fa-user-o"></i> {{Auth::user()->name}}</a></li>
                     <li><a href="{{route('user.logout')}}"><i class="fa fa-user-o"></i> Logout</a></li>
                 @else
                     <li><a type="button" data-toggle="modal" data-target="#loginFormModal"><i class="fa fa-user-o"></i> Login</a></li>

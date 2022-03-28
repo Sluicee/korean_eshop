@@ -44,6 +44,7 @@ class MainController extends Controller
         $order = new Order;
         $order->user_id = Auth::user()->id;
         $order->familiya = $request->familiya;
+        $order->total_price = $totalPrice->total_price;
         $order->imya = $request->imya;
         $order->otchestvo = $request->otchestvo;
         $order->address = $request->address;

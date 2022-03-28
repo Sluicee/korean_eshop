@@ -20,6 +20,7 @@ Route::get('/catalog/{category}/product{id}', 'App\Http\Controllers\ProductContr
 Route::get('/checkout', 'App\Http\Controllers\MainController@openCheckOut')->name('checkout')->middleware('auth');
 Route::post('/checkout/pass', 'App\Http\Controllers\MainController@checkOut')->name('pass_checkout')->middleware('auth');
 
+
 Route::name('cart.')->group(function () {
     Route::get('/cart', 'App\Http\Controllers\MainController@cartList')->name('list');
     Route::post('/cart/store/{id}', 'App\Http\Controllers\CartController@addToCart')->name('store');
@@ -64,5 +65,7 @@ Route::name('user.')->group(function()
         Auth::logout();
         return redirect(route('home'));
     })->name('logout');
+
+    Route::get('/profile', 'App\Http\Controllers\UserController@getProfile')->name('profile')->middleware('auth');
 
 });

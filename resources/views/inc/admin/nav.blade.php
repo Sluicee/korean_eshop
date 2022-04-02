@@ -10,6 +10,7 @@
                 <li><a href="{{ route('admin.panel') }}">Главная</a></li>
                 <li><a href="{{ route('admin.editProducts') }}">Редактировать каталог</a></li>
                 <li><a href="{{ route('admin.editCategories') }}">Редактировать категории</a></li>
+                <li><a href="{{ route('admin.orders') }}">Заказы</a></li>
             </ul>
             <!-- /NAV -->
         </div>

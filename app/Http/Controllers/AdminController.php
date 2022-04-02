@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
 use App\Models\Product;
 use App\Models\Image;
+use App\Models\Order;
 use App\Models\Category;
 use Illuminate\Support\Facades\Log;
 
@@ -156,5 +157,10 @@ class AdminController extends Controller
             $counter++;
         }
         return redirect()->route('admin.editCategories');
+    }
+
+    public function getOrders() {
+        $orders = Order::all(); 
+        return view('admin_panel.orders', ['orders' => $orders]);
     }
 }

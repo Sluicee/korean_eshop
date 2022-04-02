@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('title-block'){{Auth::user()->name}} @endsection
+@extends('layouts.admin')
+@section('title-block')Orders @endsection
 
 @section('content')
 
@@ -23,8 +23,8 @@
                 <tbody>
                     <tr>
                         @foreach ($orders as $order)
-                            <td><a href="{{route('get_order', $order->id)}}">Заказ #{{$order->id}}</a></td>
-                            <td class="btn btn-info">{{$order->status}}</td>
+                            <td><a href="#">Заказ #{{$order->id}}</a></td>
+                            <td>{{$order->status}}</td>
                             <td>{{$order->payment_status}}</td>
                             <td>{{$order->total_price}} руб.</td>
                             <td>{{$order->created_at}}</td>

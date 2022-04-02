@@ -54,5 +54,10 @@
 	
     
 	<script src="/js/app.js"></script>
+	<script>
+		$.trumbowyg.svgPath = '/css/icons.svg';
+		$('.richtextarea').trumbowyg();
+	</script>
+	@include('inc.scripts')
 </body>
 </html>

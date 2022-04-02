@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->text('cart');
-            $table->int('total_price');
+            $table->integer('total_price');
             $table->string('familiya');
             $table->string('imya');
             $table->string('otchestvo')->nullable();

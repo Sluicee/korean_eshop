@@ -17,9 +17,10 @@ Route::get('/', 'App\Http\Controllers\MainController@home')->name('home');
 Route::get('/catalog', 'App\Http\Controllers\MainController@openCatalog')->name('catalog');
 Route::get('/catalog/{category}/product{id}', 'App\Http\Controllers\ProductController@openProduct')->name('open-product');
 
-Route::get('/checkout', 'App\Http\Controllers\MainController@openCheckOut')->name('checkout')->middleware('auth');
-Route::post('/checkout/pass', 'App\Http\Controllers\MainController@checkOut')->name('pass_checkout')->middleware('auth');
+Route::get('/checkout', 'App\Http\Controllers\OrderController@openCheckOut')->name('checkout')->middleware('auth');
+Route::post('/checkout/pass', 'App\Http\Controllers\OrderController@checkOut')->name('pass_checkout')->middleware('auth');
 
+Route::get('/orders/order_{id}', 'App\Http\Controllers\OrderController@getOrder')->name('get_order')->middleware('auth');
 
 Route::name('cart.')->group(function () {
     Route::get('/cart', 'App\Http\Controllers\MainController@cartList')->name('list');
@@ -51,7 +52,9 @@ Route::name('admin.')->group(function () {
     Route::get('/admin/categories', 'App\Http\Controllers\AdminController@openAdminEditCategories')->name('editCategories')->middleware('auth')->middleware('role:ADMIN');
     Route::post('/admin/categories/categorySubmit', 'App\Http\Controllers\AdminController@categorySubmit')->name('categorySubmit')->middleware('auth')->middleware('role:ADMIN');
     Route::get('/admin/categories/{id}/categoryDelete', 'App\Http\Controllers\AdminController@categoryDelete')->name('categoryDelete')->middleware('auth')->middleware('role:ADMIN');
-    Route::get('/admin/categories//categoryUpdate', 'App\Http\Controllers\AdminController@categoryUpdate')->name('categoryUpdate')->middleware('auth')->middleware('role:ADMIN');
+    Route::get('/admin/categories/categoryUpdate', 'App\Http\Controllers\AdminController@categoryUpdate')->name('categoryUpdate')->middleware('auth')->middleware('role:ADMIN');
+
+    Route::get('/admin/orders', 'App\Http\Controllers\AdminController@getOrders')->name('orders')->middleware('auth')->middleware('role:ADMIN');
 });
 
 Route::name('user.')->group(function()

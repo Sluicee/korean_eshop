@@ -535,17 +535,14 @@ body {
     position: relative;
   }
   
-  .header-search form .input-select {
+  
+  .header-search div .input {
+    width: calc(100% - 100px);
     margin-right: -4px;
     border-radius: 40px 0px 0px 40px;
   }
   
-  .header-search form .input {
-    width: calc(100% - 260px);
-    margin-right: -4px;
-  }
-  
-  .header-search form .search-btn {
+  .header-search div .search-btn {
     height: 40px;
     width: 100px;
     background: #244673;

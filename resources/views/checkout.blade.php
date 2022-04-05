@@ -94,14 +94,14 @@
                         @if (session('cart'))
                             @foreach(session('cart') as $id => $details)
                                 @if ($details['sale']!=0)
-                                    @php $total += $details['price'] * ($details['sale'] / 100) * $details['quantity'] @endphp
+                                    @php $total += $details['price'] - $details['price'] * ($details['sale'] / 100) * $details['quantity'] @endphp
                                 @else
                                     @php $total += $details['price'] * $details['quantity'] @endphp
                                 @endif
                                 <div class="order-col">
                                     <div>{{$details['quantity']}}x {{$details['name']}}</div>
                                     @if ($details['sale']!=0)
-                                        <div>{{ $details['price'] * ($details['sale'] / 100) * $details['quantity'] }} руб.</div>
+                                        <div>{{$details['price'] - $details['price'] * ($details['sale'] / 100) * $details['quantity'] }} руб.</div>
                                     @else
                                         <div>{{ $details['price'] * $details['quantity'] }} руб.</div>
                                     @endif

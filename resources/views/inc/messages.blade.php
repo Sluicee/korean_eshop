@@ -21,7 +21,7 @@
 </div> --}}
 @if($errors->any())
 <script>showPopUp()</script>
-<div id="snackbar">
+<div id="snackbar snackbar_error">
     <ul>
         @foreach($errors->all() as $error)
             <li>{{ $error }}</li>
@@ -32,7 +32,7 @@
 
 @if(session('success'))
 <script>showPopUp()</script>
-<div id="snackbar">
+<div id="snackbar snackbar_success">
     {{session('success')}}
 </div>
 @endif

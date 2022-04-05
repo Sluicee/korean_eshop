@@ -17,6 +17,12 @@ Route::get('/', 'App\Http\Controllers\MainController@home')->name('home');
 Route::get('/catalog', 'App\Http\Controllers\MainController@openCatalog')->name('catalog');
 Route::get('/catalog/{category}/product{id}', 'App\Http\Controllers\ProductController@openProduct')->name('open-product');
 
+Route::get('/about', 'App\Http\Controllers\MainController@about')->name('about');
+Route::get('/privacy', 'App\Http\Controllers\MainController@privacy')->name('privacy');
+Route::get('/terms', 'App\Http\Controllers\MainController@terms')->name('terms');
+Route::get('/delivery', 'App\Http\Controllers\MainController@delivery')->name('delivery');
+Route::get('/contacts', 'App\Http\Controllers\MainController@contacts')->name('contacts');
+
 Route::get('/checkout', 'App\Http\Controllers\OrderController@openCheckOut')->name('checkout')->middleware('auth');
 Route::post('/checkout/pass', 'App\Http\Controllers\OrderController@checkOut')->name('pass_checkout')->middleware('auth');
 

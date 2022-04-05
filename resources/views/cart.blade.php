@@ -25,7 +25,7 @@
                     @if(session('cart'))
                         @foreach(session('cart') as $id => $details)
                             @if ($details['sale']!=0)
-                                @php $total += $details['price'] * ($details['sale'] / 100) * $details['quantity'] @endphp
+                                @php $total += $details['price'] - $details['price'] * ($details['sale'] / 100) * $details['quantity'] @endphp
                             @else
                                 @php $total += $details['price'] * $details['quantity'] @endphp
                             @endif
@@ -49,7 +49,7 @@
                                     <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
                                 </td>
                                 @if ($details['sale']!=0)
-                                    <td data-th="Subtotal" class="text-center">{{ $details['price'] * ($details['sale'] / 100) * $details['quantity'] }} руб.</td>
+                                    <td data-th="Subtotal" class="text-center">{{ $details['price'] - $details['price'] * ($details['sale'] / 100) * $details['quantity'] }} руб.</td>
                                 @else
                                     <td data-th="Subtotal" class="text-center">{{ $details['price'] * $details['quantity'] }} руб.</td>
                                 @endif

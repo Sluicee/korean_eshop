@@ -23,7 +23,7 @@
                 <h3 class="product-name"><a href="{{route('open-product', ["no", $item->id])}}">{{ $item->name }}</a></h3>
             @endif
             @if ($item->sale != 0)
-                <h4 class="product-price">{{$item->price * ($item->sale / 100)}} руб.  <del class="product-old-price">{{$item->price}} руб.</del></h3>
+                <h4 class="product-price">{{$item->price - $item->price * ($item->sale / 100)}} руб.  <del class="product-old-price">{{$item->price}} руб.</del></h3>
             @else
                 <h4 class="product-price">{{$item->price}} руб.</h3>
             @endif

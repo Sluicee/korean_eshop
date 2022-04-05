@@ -872,6 +872,7 @@ body {
   .product .product-body .product-name {
     text-transform: uppercase;
     font-size: 14px;
+    height: 60px;
   }
   
   .product .product-body .product-name>a {

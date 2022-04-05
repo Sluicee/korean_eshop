@@ -8,8 +8,8 @@
             <ul class="main-nav nav navbar-nav">
                 <li><a href="{{ route('home') }}">Главная</a></li>
                 <li><a href="{{ route('catalog') }}">Каталог</a></li>
-                <li><a href="#">О магазине</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li><a href="{{ route('about') }}">О магазине</a></li>
+                <li><a href="{{ route('contacts') }}">Контакты</a></li>
             </ul>
             <!-- /NAV -->
         </div>

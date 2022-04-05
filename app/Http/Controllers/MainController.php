@@ -32,6 +32,30 @@ class MainController extends Controller
         return view('wishlist');
     }
 
+    public function about()
+    {
+        return view('about');
+    }
+
+    public function privacy()
+    {
+        return view('privacy');
+    }
+
+    public function terms()
+    {
+        return view('terms');
+    }
+
+    public function delivery()
+    {
+        return view('delivery');
+    }
+
+    public function contacts()
+    {
+        return view('contacts');
+    }
     
 
 }

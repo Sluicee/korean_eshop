@@ -14,7 +14,7 @@
                     <li><a href="{{route('home')}}">Главная</a></li>
                     <li><a href="{{route('catalog')}}">Каталог</a></li>
                     @if (App\Models\Category::find($product->category) != null)
-                        <li><a href="#">{{App\Models\Category::find($product->category)->name}}</a></li>
+                        <li><a href="{{route('catalog', "category=$product->category")}}">{{App\Models\Category::find($product->category)->name}}</a></li>
                     @else
                         <li><a href="#">-</a></li>
                     @endif

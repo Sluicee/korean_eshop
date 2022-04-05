@@ -34,14 +34,14 @@
                     <h3 class="aside-title">Категории</h3>
                     <div class="checkbox-filter">
                         <a href="{{route('catalog')}}">
-                            <button type="button" class="btn btn-light">Все</button>
+                            <button type="button" class="btn btn-light mt-3" style="margin-top: 3px">Все</button>
                         </a>
                         @foreach ($categories as $cat)
                             <a href="{{route('catalog', "category=$cat->id")}}">
                                 @if (app('request')->input('category') == "$cat->id")
-                                    <button type="button" class="btn btn-info">{{$cat->name}}<small>({{$cat->products_count}})</small></button>
+                                    <button type="button" class="btn btn-info" style="margin-top: 3px">{{$cat->name}}<small>({{$cat->products_count}})</small></button>
                                 @else
-                                    <button type="button" class="btn btn-light">{{$cat->name}}<small>({{$cat->products_count}})</small></button>
+                                    <button type="button" class="btn btn-light" style="margin-top: 3px">{{$cat->name}}<small>({{$cat->products_count}})</small></button>
                                 @endif
                             </a>
                         @endforeach
@@ -74,39 +74,34 @@
 
                 <!-- aside Widget -->
                 <div class="aside">
-                    <h3 class="aside-title">Top selling</h3>
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product01.png" alt="">
+                    @php
+                        $recs = $data->random(3)
+                    @endphp
+                    <h3 class="aside-title">Рекомендуем</h3>
+                    @foreach ($recs as $item)
+                        <div class="product-widget">
+                            <div class="product-img">
+                                @php
+                                    $imageURL = $item->images[0]->url;
+                                @endphp
+                                <img src="{{asset("storage/image/$imageURL")}}" alt="">
+                            </div>
+                            <div class="product-body">
+                                @if (App\Models\Category::find($item->category) != null)
+                                    <p class="product-category">{{ App\Models\Category::find($item->category)->name }}</p>
+                                    <h3 class="product-name"><a href="{{route('open-product', [App\Models\Category::find($item->category)->name, $item->id])}}">{{ $item->name }}</a></h3>
+                                @else
+                                    <p class="product-category">NO CATEGORY</p>
+                                    <h3 class="product-name"><a href="{{route('open-product', ["no", $item->id])}}">{{ $item->name }}</a></h3>
+                                @endif
+                                @if ($item->sale != 0)
+                                    <h4 class="product-price">{{$item->price - $item->price * ($item->sale / 100)}} руб.  <del class="product-old-price">{{$item->price}} руб.</del></h3>
+                                @else
+                                    <h4 class="product-price">{{$item->price}} руб.</h3>
+                                @endif
+                            </div>
                         </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
-
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product02.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
-
-                    <div class="product-widget">
-                        <div class="product-img">
-                            <img src="./img/product03.png" alt="">
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Category</p>
-                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <!-- /aside Widget -->
             </div>

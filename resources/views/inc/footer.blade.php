@@ -23,15 +23,15 @@
                         <h3 class="footer-title">Категории</h3>
                         <ul class="footer-links">
                             <li><a href="{{route('catalog', 'category=1')}}">Лапша</a></li>
-                            <li><a href="{{route('catalog', 'category=2')}}">Рис, Токпокки</a></li>
-                            <li><a href="{{route('catalog', 'category=3')}}">Кимчхи</a></li>
-                            <li><a href="{{route('catalog', 'category=4')}}">Напитки</a></li>
-                            <li><a href="{{route('catalog', 'category=5')}}">Морская капуста, морепродукты</a></li>
-                            <li><a href="{{route('catalog', 'category=6')}}">Соусы, маринады, пасты</a></li>
-                            <li><a href="{{route('catalog', 'category=7')}}">Приправы, панировка</a></li>
-                            <li><a href="{{route('catalog', 'category=8')}}">Уксус, масло</a></li>
-                            <li><a href="{{route('catalog', 'category=9')}}">Снеки, чипсы</a></li>
-                            <li><a href="{{route('catalog', 'category=10')}}">Сладости</a></li>
+                            <li><a href="{{route('catalog', 'category=4')}}">Рис, Токпокки</a></li>
+                            <li><a href="{{route('catalog', 'category=2')}}">Кимчхи</a></li>
+                            <li><a href="{{route('catalog', 'category=10')}}">Напитки</a></li>
+                            <li><a href="{{route('catalog', 'category=3')}}">Морская капуста, морепродукты</a></li>
+                            <li><a href="{{route('catalog', 'category=5')}}">Соусы, маринады, пасты</a></li>
+                            <li><a href="{{route('catalog', 'category=6')}}">Приправы, панировка</a></li>
+                            <li><a href="{{route('catalog', 'category=7')}}">Уксус, масло</a></li>
+                            <li><a href="{{route('catalog', 'category=8')}}">Снеки, чипсы</a></li>
+                            <li><a href="{{route('catalog', 'category=9')}}">Сладости</a></li>
                         </ul>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                     <div class="footer">
                         <h3 class="footer-title">Сервисы</h3>
                         <ul class="footer-links">
-                            <li><a href="{{route('about')}}">Мой аккаунт</a></li>
+                            <li><a href="{{route('user.profile')}}">Мой аккаунт</a></li>
                             <li><a href="{{route('cart.list')}}">Корзина</a></li>
                             <li><a href="{{route('wishlist.list')}}">Список желаемого</a></li>
                         </ul>

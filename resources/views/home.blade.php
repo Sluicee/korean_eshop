@@ -16,7 +16,7 @@
                     </div>
                     <div class="shop-body">
                         <h3>Свежая<br>Кимчхи</h3>
-                        <a href="{{route('catalog', 'category=3')}}" class="cta-btn">Выбрать <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{route('catalog', 'category=2')}}" class="cta-btn">Выбрать <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="shop-body">
                         <h3>Рисовые<br>клёцки</h3>
-                        <a href="{{route('catalog', 'category=2')}}" class="cta-btn">Выбрать <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{route('catalog', 'category=4')}}" class="cta-btn">Выбрать <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>

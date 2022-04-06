@@ -74,9 +74,6 @@
 
                 <!-- aside Widget -->
                 <div class="aside">
-                    @php
-                        $recs = $data->random(3)
-                    @endphp
                     <h3 class="aside-title">Рекомендуем</h3>
                     @foreach ($recs as $item)
                         <div class="product-widget">
@@ -147,13 +144,9 @@
 
                 <!-- store bottom filter -->
                 <div class="store-filter clearfix">
-                    <span class="store-qty">Showing 20-100 products</span>
+                    <span class="store-qty">Отображается {{$data->count()}} из {{ $data->total() }} товаров.</span>
                     <ul class="store-pagination">
-                        <li class="active">1</li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                        {{$data->links()}}
                     </ul>
                 </div>
                 <!-- /store bottom filter -->

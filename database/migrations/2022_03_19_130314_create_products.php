@@ -16,19 +16,19 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('category')->default(0);
-            $table->float('price')->default(0);
-            $table->integer('sale')->default(0);
+            $table->integer('category')->default(0)->nullable();
+            $table->float('price')->default(0)->nullable();
+            $table->integer('sale')->default(0)->nullable();
             $table->boolean('stock')->default(false);
-            $table->longText('description');
-            $table->longText('short_description');
-            $table->string('mass')->default("0");
+            $table->longText('description')->nullable();
+            $table->longText('short_description')->nullable();
+            $table->string('mass')->default("0")->nullable();
             $table->string('taste')->nullable();
-            $table->string('code')->default("0");
-            $table->string('expiration_date')->default("0");
-            $table->text('storage_conditions');
-            $table->string('energy_value')->default("0");
-            $table->longText('composition');
+            $table->string('code')->default("0")->nullable();
+            $table->string('expiration_date')->default("0")->nullable();
+            $table->text('storage_conditions'->nullable());
+            $table->string('energy_value')->default("0")->nullable();
+            $table->longText('composition')->nullable();
             $table->timestamps();
         });
     }

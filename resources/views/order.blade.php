@@ -11,6 +11,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h4>Заказ #{{$order->id}} </h4>
+                <hr>
                 <div>
                     <h4>Куда: </h4><p>{{$order->country}}, {{$order->city}}, {{$order->address}}</p>
                 </div>
@@ -50,6 +51,7 @@
                         @endphp
                     </div>
                 @endforeach
+                <hr>
                 <h3>Сумма: {{$total}}</h3>
             </div>
             

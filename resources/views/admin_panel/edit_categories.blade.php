@@ -62,6 +62,23 @@
     </div>
 
     <script>
-        
+        let pages = document.querySelectorAll('.edit_category');
+        let editButton = document.querySelector('.edit_btn');
+        let cancelButton = document.querySelector('.cancel_btn');
+        editButton.onclick = function() {
+            pages.forEach(function(field) {
+                field.classList.toggle('cat_new_name_disabled');
+            });
+        }
+        cancelButton.onclick = function() {
+            pages.forEach(function(field) {
+                field.classList.toggle('cat_new_name_disabled');
+            });
+        }
+        const cat_new_name = document.querySelector('.cat_new_name');
+        const endInput = document.getElementById('new_cat_name');
+        cat_new_name.oninput = function() {
+            endInput.value = cat_new_name.value;
+        };
     </script>
 @endsection

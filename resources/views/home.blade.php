@@ -188,7 +188,7 @@
                             <div class="products-slick" data-nav="#slick-nav-2">
                                 @foreach ($data as $item)
                                 <!-- product -->
-                                @if ($item->category == 2)
+                                @if ($item->category == 4)
                                     @include('inc.product_card')
                                 @endif
                                 <!-- /product -->
@@ -199,7 +199,7 @@
                             <div class="products-slick" data-nav="#slick-nav-2">
                                 @foreach ($data as $item)
                                 <!-- product -->
-                                @if ($item->category == 3)
+                                @if ($item->category == 2)
                                     @include('inc.product_card')
                                 @endif
                                 <!-- /product -->
@@ -210,7 +210,7 @@
                             <div class="products-slick" data-nav="#slick-nav-2">
                                 @foreach ($data as $item)
                                 <!-- product -->
-                                @if ($item->category == 4)
+                                @if ($item->category == 10)
                                     @include('inc.product_card')
                                 @endif
                                 <!-- /product -->

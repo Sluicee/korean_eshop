@@ -21,15 +21,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($orders as $order)
                     <tr>
-                        @foreach ($orders as $order)
-                            <td><a href="#">Заказ #{{$order->id}}</a></td>
-                            <td>{{$order->status}}</td>
-                            <td>{{$order->payment_status}}</td>
-                            <td>{{$order->total_price}} руб.</td>
-                            <td>{{$order->created_at}}</td>
-                        @endforeach
+                        <td><a href="{{route('get_order', $order->id)}}">Заказ #{{$order->id}}</a></td>
+                        <td>{{$order->status}}</td>
+                        <td>{{$order->payment_status}}</td>
+                        <td>{{$order->total_price}} руб.</td>
+                        <td>{{$order->created_at}}</td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

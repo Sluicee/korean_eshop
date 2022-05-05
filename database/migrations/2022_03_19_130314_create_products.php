@@ -22,13 +22,6 @@ return new class extends Migration
             $table->boolean('stock')->default(false);
             $table->longText('description')->nullable();
             $table->longText('short_description')->nullable();
-            $table->string('mass')->default("0")->nullable();
-            $table->string('taste')->nullable();
-            $table->string('code')->default("0")->nullable();
-            $table->string('expiration_date')->default("0")->nullable();
-            $table->text('storage_conditions'->nullable());
-            $table->string('energy_value')->default("0")->nullable();
-            $table->longText('composition')->nullable();
             $table->timestamps();
         });
     }

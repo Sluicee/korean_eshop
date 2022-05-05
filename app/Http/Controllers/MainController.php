@@ -17,7 +17,7 @@ class MainController extends Controller
     }
 
     public function openCatalog(ProductFilters $filters){
-        $data = Product::with('images')->filter($filters)->paginate(20)->withQueryString();
+        $data = Product::with('images')->filter($filters)->paginate(15)->withQueryString();
         $recs = Product::with('images')->get()->random(3);
         $categories = Category::withCount('products')->get();
         return view('catalog', ['data' => $data, 'categories' => $categories, 'recs' => $recs]);

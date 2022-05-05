@@ -2,7 +2,6 @@
 @section('title-block')Cart @endsection
 
 @section('content')
-
 <!-- SECTION -->
 <div class="section">
     <!-- container -->
@@ -68,7 +67,11 @@
                         <td colspan="6" class="text-right">
                             <a href="{{ route('home') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Продолжить покупки</a>
                             @if (session('cart') != [])
-                                <a href="{{ route('checkout') }}" class="btn btn-success"><i class="fa fa-angle-left"></i> Перейти к оформлению</a>
+                                @if(Auth::check())
+                                    <a href="{{ route('checkout') }}" class="btn btn-success"><i class="fa fa-angle-left"></i> Перейти к оформлению</a>
+                                @else
+                                    <a class="btn btn-success" type="button" data-toggle="modal" data-target="#loginFormModal"><i class="fa fa-angle-left"></i> Перейти к оформлению</a>
+                                @endif
                             @endif
                         </td>
                     </tr>

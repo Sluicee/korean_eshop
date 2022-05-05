@@ -27,27 +27,29 @@
             </div>
             <div class="col-md-8">
                 <h4>Состав заказа:</h4>
+                @php
+                    $total = 0;
+                @endphp
                 @foreach ($cart as $item)
                     @php
                         $image = $item['image'];
-                        $total = 0;
                     @endphp
                     <div class="card mb-3 border rounded-lg" style="max-width: 540px;">
                         <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="{{asset("storage/image/$image")}}" class="card-img" alt="cart item" style="width: 180px">
+                            <img src="{{asset("/public/storage/image/$image")}}" class="card-img" alt="cart item" style="width: 180px">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
                             <h5 class="card-title">{{$item['name']}}</h5>
                             <p class="card-text">Количество: {{$item['quantity']}}</p>
-                            <p class="card-text">Цена за 1шт: {{$item['price'] * ($item['sale'] /100)}}</p>
-                            <p class="card-text">Стоимость: {{$item['quantity'] * $item['price'] * ($item['sale'] /100)}}</p>
+                            <p class="card-text">Цена за 1шт: {{$item['price'] - $item['price'] * ($item['sale'] /100)}}</p>
+                            <p class="card-text">Стоимость: {{$item['quantity'] * ($item['price'] - $item['price'] * ($item['sale'] /100))}}</p>
                             </div>
                         </div>
                         </div>
                         @php
-                            $total += $item['quantity'] * $item['price'] * ($item['sale'] /100);
+                            $total += $item['quantity'] * ($item['price'] - $item['price'] * ($item['sale'] /100));
                         @endphp
                     </div>
                 @endforeach

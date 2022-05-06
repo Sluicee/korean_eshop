@@ -79,9 +79,9 @@
                             @else
                                 <h3 class="product-price">{{$product->price}} руб.</h3>
                             @endif
-                            <span class="product-available">In Stock</span>
+                            <span class="product-available">В наличии</span>
                         @else
-                            <del class="product-price">Out Stock</del>
+                            <del class="product-price">Нет в наличии</del>
                         @endif
                     </div>
                     <p>{!!$product->short_description!!}</p>
@@ -129,7 +129,6 @@
                     <!-- product tab nav -->
                     <ul class="tab-nav">
                         <li class="active"><a data-toggle="tab" href="#tab1">Описание</a></li>
-                        <li><a data-toggle="tab" href="#tab2">Детали</a></li>
                         <li><a data-toggle="tab" href="#tab3">Отзовы (3)</a></li>
                     </ul>
                     <!-- /product tab nav -->
@@ -140,21 +139,11 @@
                         <div id="tab1" class="tab-pane fade in active">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>{!!$product->description!!} @if ($product->taste != null) <br> <b>Вкус:</b> {{$product->taste}}@endif <br><b>Масса Нетто, г:</b> {{$product->mass}}<br><b>Срок годности, м:</b> {{$product->expiration_date}}</p>
+                                    <p>{!!$product->description!!}</p>
                                 </div>
                             </div>
                         </div>
                         <!-- /tab1  -->
-
-                        <!-- tab2  -->
-                        <div id="tab2" class="tab-pane fade in">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p><b>Штрих-код:</b> {{$product->code}} <br><b>Условия хранения:</b> {!!$product->storage_conditions!!} <br><b>Энергетическая ценность, кДж:</b> {{$product->energy_value}}<br><b>Состав:</b> {!!$product->composition!!}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /tab2  -->
 
                         <!-- tab3  -->
                         <div id="tab3" class="tab-pane fade in">

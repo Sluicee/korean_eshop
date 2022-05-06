@@ -11,12 +11,12 @@
             <table id="cart" class="table table-hover table-condensed">
                 <thead>
                     <tr>
-                        <th style="width:50%">Товар</th>
-                        <th style="width:10%">Цена</th>
-                        <th style="width:10%">Скидка</th>
-                        <th style="width:8%">Количество</th>
-                        <th style="width:22%" class="text-center">Стоимость</th>
-                        <th style="width:10%"></th>
+                        <th>Товар</th>
+                        <th>Цена</th>
+                        <th>Скидка</th>
+                        <th>Количество</th>
+                        <th class="text-center">Стоимость</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

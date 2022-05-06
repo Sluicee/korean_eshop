@@ -29,7 +29,7 @@ class WishlistController extends Controller
                     ]
             ];
             session()->put('wishlist', $wishlist);
-            return redirect()->back()->with('success', 'Product added to wishlist successfully!');
+            return redirect()->back()->with('success', 'Добавлено в желаемое!');
         }
         // if item not exist in wishlist then add to wishlist with quantity
         $wishlist[$id] = [
@@ -42,7 +42,7 @@ class WishlistController extends Controller
             "image" => $product->images[0]->url
         ];
         session()->put('wishlist', $wishlist);
-        return redirect()->back()->with('success', 'Product added to wishlist successfully!');
+        return redirect()->back()->with('success', 'Добавлено в желаемое!');
     }
 
     public function removeWishlist(Request $request)
@@ -53,7 +53,7 @@ class WishlistController extends Controller
                 unset($wishlist[$request->id]);
                 session()->put('wishlist', $wishlist);
             }
-            session()->flash('success', 'Product removed successfully');
+            session()->flash('success', 'Удалено из желаемого');
         }
     }
 }

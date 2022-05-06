@@ -34,24 +34,14 @@ class AdminController extends Controller
         ]);
         $product = new Product;
         $product->name = $request->name;
-        $product->description = $request->description;
         $product->category = $request->category;
         $product->price = $request->price;
         $product->sale = $request->sale;
         $product->stock = $request->stock ? true : false;
         $product->description = $request->description;
         $product->short_description = $request->short_description;
-        $product->mass = $request->mass;
-        $product->taste = $request->taste;
-        $product->code = $request->code;
-        $product->expiration_date = $request->expiration_date;
-        $product->storage_conditions = $request->storage_conditions;
-        $product->energy_value = $request->energy_value;
-        $product->composition = $request->composition;
         $product->save();
         $files = $request->file('images');
-
-        //TODO: сделать картинки одного формата
 
         foreach ($files as $imagefile) {
             $image = new Image;
@@ -80,23 +70,14 @@ class AdminController extends Controller
     public function updateProduct($id, Request $request) {
         $product = Product::find($id);
         $product->name = $request->name;
-        $product->description = $request->description;
         $product->category = $request->category;
         $product->price = $request->price;
         $product->sale = $request->sale;
         $product->stock = $request->stock ? true : false;
         $product->description = $request->description;
         $product->short_description = $request->short_description;
-        $product->mass = $request->mass;
-        $product->taste = $request->taste;
-        $product->code = $request->code;
-        $product->expiration_date = $request->expiration_date;
-        $product->storage_conditions = $request->storage_conditions;
-        $product->energy_value = $request->energy_value;
-        $product->composition = $request->composition;
         $product->save();
         $files = $request->file('images');
-        // dd(Image::with('product')->where('product_id', '=', $id)->get());
         if($request->replaceImages){
             if ($files) {
                 $product->images()->delete();

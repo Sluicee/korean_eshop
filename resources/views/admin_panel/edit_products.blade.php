@@ -11,7 +11,7 @@
             <a href="{{ route('admin.uploadProduct') }}" class="btn btn-success"><i class="fa fa-angle-left"></i> Добавить новый продукт</a>
         </div>
         <div class="row">
-            <table id="cart" class="table table-hover table-bordered" style="overflow:hidden;">
+            <table id="cart" class="table table-hover" style="overflow:hidden;">
                 <thead>
                     <tr>
                         <th >id</th>
@@ -21,13 +21,6 @@
                         <th  class="text-center">Скидка, %</th>
                         <th  class="text-center">В наличии?</th>
                         <th  class="text-center">Описание</th>
-                        <th  class="text-center">Масса, г</th>
-                        <th  class="text-center">Вкус</th>
-                        <th  class="text-center">Штрих-код</th>
-                        <th  class="text-center">Срок годности, м</th>
-                        <th  class="text-center">Условия хранения</th>
-                        <th  class="text-center">Эн. стоим., кДж</th>
-                        <th  class="text-center">Состав</th>
                         <th  class="text-center"></th>
                     </tr>
                 </thead>
@@ -57,30 +50,8 @@
                                 @endif    
                             </td>
                             <td data-th="Description" class="text-center">
-                                <div class="tooltip2">Краткое описание
-                                    <span class="tooltiptext">{!! $item->short_description !!}</span>
-                                </div>  
-                                <div class="tooltip2">Полное описание
-                                    <span class="tooltiptext">{!! $item->description !!}</span>
-                                </div>    
-                            </td>
-                            <td data-th="Mass" class="text-center">{{ $item->mass }}</td>
-                            <td data-th="Taste" class="text-center">{{ $item->taste }}</td>
-                            <td data-th="Code" class="text-center">
-                                <div class="tooltip2">Код
-                                    <span class="tooltiptext">{{ $item->code }}</span>
-                                </div>  
-                            </td>
-                            <td data-th="Expl" class="text-center">{{ $item->expiration_date }}</td>
-                            <td data-th="Cond" class="text-center">
-                                <div class="tooltip2">Условия хранения
-                                    <span class="tooltiptext">{!! $item->storage_conditions !!}</span>
-                                </div>     
-                            </td>
-                            <td data-th="Enrg" class="text-center">{{ $item->energy_value }}</td>
-                            <td data-th="Composition" class="text-center">
-                                <div class="tooltip2">Состав
-                                    <span class="tooltiptext">{!! $item->composition !!}</span>
+                                <div class="tooltip_bs"  data-toggle="tooltip" title="{!! $item->short_description !!}">Краткое описание
+                                    {{-- <span class="tooltiptext">{!! $item->short_description !!}</span> --}}
                                 </div>   
                             </td>
                             <td class="actions" data-th="">

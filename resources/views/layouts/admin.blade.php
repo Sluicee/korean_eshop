@@ -26,6 +26,9 @@
 
         <!-- Rich Text Editor -->
         <link rel="stylesheet" href="/css/trumbowyg.min.css">
+
+		<!-- Data Tables -->
+        <link rel="stylesheet" type="text/css" href="/css/datatables.min.css"/>
         
         <!-- Custom stlylesheet -->
         <link type="text/css" rel="stylesheet" href="/css/app.css"/>
@@ -44,6 +47,7 @@
 		<script src="/js/nouislider.min.js"></script>
 		<script src="/js/jquery.zoom.min.js"></script>
 		<script src="/js/trumbowyg.min.js"></script>
+		<script src="/js/datatables.min.js"></script>
     </head>
 <body>
     @include('inc.admin.header')
@@ -57,6 +61,8 @@
 	<script>
 		$.trumbowyg.svgPath = '/css/icons.svg';
 		$('.richtextarea').trumbowyg();
+		$('.dataTable').DataTable();
+		$('.tooltip_bs').tooltip({ boundary: 'window' })
 	</script>
 	@include('inc.scripts')
 </body>

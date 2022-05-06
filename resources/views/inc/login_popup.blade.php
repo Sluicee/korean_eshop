@@ -12,13 +12,13 @@
             <div class="modal-body text-center">
                 <img src="/img/logo_black.svg" alt="">
                 <h1 class="h3 mb-3 font-weight-normal">Авторизация</h1>
-                <label for="inputLogin" class="sr-only">Логин</label>
-                <input type="text" id="inputLogin" name="login" class="form-control" placeholder="Логин" required="" autofocus="">
+                <label for="inputEmail" class="sr-only">Email</label>
+                <input type="email" id="inputEmailLogin" name="email" class="form-control" placeholder="Эл. почта" required="" autofocus="">
                 <label for="inputPassword" class="sr-only">Пароль</label>
-                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Пароль" required="">
+                <input type="password" id="inputPasswordLogin" name="password" class="form-control" placeholder="Пароль" required="">
             </div>
             <div class="modal-footer">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
             </div>
         </form>
       </div>

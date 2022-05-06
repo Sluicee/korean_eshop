@@ -14,17 +14,15 @@
               <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
               <label for="inputName" class="sr-only">ФИО</label>
               <input type="text" id="inputName" name="name" class="form-control" placeholder="ФИО" required="" autofocus="">
-              <label for="inputLogin" class="sr-only">Логи</label>
-              <input type="text" id="inputLogin" name="login" class="form-control" placeholder="Логин" required="" autofocus="">
               <label for="inputEmail" class="sr-only">Email</label>
               <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required="" autofocus="">
               <label for="inputPassword" class="sr-only">Пароль</label>
               <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Пароль" required="">
               <label for="inputPassword" class="sr-only">Подтверждение пароля</label>
-              <input type="password" id="inputPassword" name="password_confirmation" class="form-control" placeholder="Подтверждение пароля" required="">
+              <input type="password" id="inputPasswordConf" name="password_confirmation" class="form-control" placeholder="Подтверждение пароля" required="">
           </div>
           <div class="modal-footer">
-              <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
           </div>
         </form>
       </div>

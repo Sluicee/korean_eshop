@@ -50,41 +50,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="mass">Масса, г</label>
-                        <input type="number" name="mass" placeholder="mass" id="mass" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="taste">Вкус</label>
-                        <input type="text" name="taste" placeholder="taste" id="taste" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="code">Код</label>
-                        <input type="number" name="code" placeholder="code" id="code" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="expiration_date">Скок годности, м</label>
-                        <input type="number" name="expiration_date" placeholder="expiration_date" id="expiration_date" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="storage_conditions">Условия хранения</label>
-                        <textarea name="storage_conditions" placeholder="storage_conditions" id="storage_conditions" class="form-control richtextarea" cols="30" rows="10"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="energy_value">Энергетическая ценность, кДж</label>
-                        <input type="number" name="energy_value" placeholder="energy_value" id="energy_value" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="composition">Состав</label>
-                        <textarea name="composition" placeholder="composition" id="composition" class="form-control richtextarea" cols="30" rows="10"></textarea>
-                    </div>
-
-                    <div class="form-group">
                         <label for="images">Изображения</label>
                         <input required type="file"  name="images[]" placeholder="images" id="images" class="form-control" multiple>
                     </div>

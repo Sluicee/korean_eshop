@@ -10,7 +10,7 @@
         <!-- row -->
         <div class="row">
             <h2>Заказы</h2>
-            <table id="cart" class="table table-hover table-condensed">
+            <table id="cart" class="dataTable table table-hover table-condensed">
                 <thead>
                     <tr>
                         <th>Номер заказа</th>

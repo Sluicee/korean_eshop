@@ -27,7 +27,7 @@ class CartController extends Controller
                     ]
             ];
             session()->put('cart', $cart);
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
+            return redirect()->back()->with('success', 'Добавлено в корзину!');
         }
         elseif ($request->qty_to_cart <= 0 and $request->qty_to_cart != null) {
             return  redirect()->back();
@@ -36,7 +36,7 @@ class CartController extends Controller
         if(isset($cart[$id])) {
             $cart[$id]['quantity']++;
             session()->put('cart', $cart);
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
+            return redirect()->back()->with('success', 'Добавлено в корзину!');
         }
         // if item not exist in cart then add to cart with quantity
         if ($request->qty_to_cart == null) {

@@ -17,7 +17,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $formFields = $request->only([
-            'login',
+            'email',
             'password'
         ]);
 
@@ -26,7 +26,7 @@ class LoginController extends Controller
         }
 
         return redirect()->to(route('home'))->withErrors([
-            'login' => 'Failed to login'
+            'login' => 'Ошибка авторизации'
         ]);
     }
 

@@ -17,6 +17,8 @@ Route::get('/', 'App\Http\Controllers\MainController@home')->name('home');
 Route::get('/catalog', 'App\Http\Controllers\MainController@openCatalog')->name('catalog');
 Route::get('/catalog/{category}/product{id}', 'App\Http\Controllers\ProductController@openProduct')->name('open-product');
 
+Route::post('/product{id}/post', 'App\Http\Controllers\ReviewController@uploadReview')->name('uploadReview')->middleware('auth');
+
 Route::get('/about', 'App\Http\Controllers\MainController@about')->name('about');
 Route::get('/privacy', 'App\Http\Controllers\MainController@privacy')->name('privacy');
 Route::get('/terms', 'App\Http\Controllers\MainController@terms')->name('terms');
@@ -72,7 +74,7 @@ Route::name('user.')->group(function()
 
     Route::get('/logout', function(){
         Auth::logout();
-        return redirect(route('home'));
+        return redirect()->back()->with('success', 'Выход выполнен!');;
     })->name('logout');
 
     Route::get('/profile', 'App\Http\Controllers\UserController@getProfile')->name('profile')->middleware('auth');

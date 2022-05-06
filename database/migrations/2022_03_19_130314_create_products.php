@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('category')->default(0)->nullable();
+            $table->float('rating')->default(0)->nullable();
             $table->float('price')->default(0)->nullable();
             $table->integer('sale')->default(0)->nullable();
             $table->boolean('stock')->default(false);

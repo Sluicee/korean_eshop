@@ -22,7 +22,7 @@ class LoginController extends Controller
         ]);
 
         if(Auth::attempt($formFields)) {
-            return redirect()->intended(route('home'));
+            return redirect()->back()->with('success', 'Вход выполнен!');
         }
 
         return redirect()->to(route('home'))->withErrors([

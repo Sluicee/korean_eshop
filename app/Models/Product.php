@@ -25,5 +25,8 @@ class Product extends Model
     {
         return $filters->apply($builder);
     }
-    
+    public function reviews()
+    {
+        return $this->hasMany('App\Models\Review');
+    }
 }

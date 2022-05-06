@@ -129,7 +129,7 @@
                     <!-- product tab nav -->
                     <ul class="tab-nav">
                         <li class="active"><a data-toggle="tab" href="#tab1">Описание</a></li>
-                        <li><a data-toggle="tab" href="#tab3">Отзовы (3)</a></li>
+                        <li><a data-toggle="tab" href="#tab3">Отзовы ({{count($reviews)}})</a></li>
                     </ul>
                     <!-- /product tab nav -->
 
@@ -152,16 +152,37 @@
                                 <div class="col-md-3">
                                     <div id="rating">
                                         <div class="rating-avg">
-                                            <span>4.5</span>
+                                            <span>{{round($product->rating, 1)}}</span>
                                             <div class="rating-stars">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
+                                                @for ($i = 0; $i < 5; $i++)
+                                                    @if ($i < $product->rating)
+                                                        <i class="fa fa-star"></i>
+                                                    @else
+                                                        <i class="fa fa-star-o"></i>
+                                                    @endif
+                                                @endfor
                                             </div>
                                         </div>
                                         <ul class="rating">
+                                            @php
+                                                $ratings = array();
+                                                foreach ($reviews as $item) {
+                                                    array_push($ratings, $item->rating);
+                                                }
+                                                $array = array(3,3,2,3,3,1,3,4,5);
+
+                                                function array_avg($array, $round=1){
+                                                    $num = count($array);
+                                                    return array_map(
+                                                        function($val) use ($num,$round){
+                                                            return array('count'=>$val,'avg'=>round($val/$num*100, $round));
+                                                        },
+                                                        array_count_values($array)
+                                                    );
+                                                }
+
+                                                $avgs = array_avg($ratings);
+                                            @endphp
                                             <li>
                                                 <div class="rating-stars">
                                                     <i class="fa fa-star"></i>
@@ -171,9 +192,20 @@
                                                     <i class="fa fa-star"></i>
                                                 </div>
                                                 <div class="rating-progress">
-                                                    <div style="width: 80%;"></div>
+                                                    <div style="width: 
+                                                    @if (array_key_exists(5, $avgs))
+                                                        {{$avgs[5]['avg']}}%
+                                                    @else
+                                                        0%
+                                                    @endif
+                                                    "></div>
                                                 </div>
-                                                <span class="sum">3</span>
+                                                <span class="sum">
+                                                    @if (array_key_exists(5, $avgs))
+                                                        {{$avgs[5]['count']}}
+                                                    @else
+                                                        0
+                                                    @endif</span>
                                             </li>
                                             <li>
                                                 <div class="rating-stars">
@@ -184,9 +216,21 @@
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
                                                 <div class="rating-progress">
-                                                    <div style="width: 60%;"></div>
+                                                    <div style="width: 
+                                                    @if (array_key_exists(4, $avgs))
+                                                        {{$avgs[4]['avg']}}%
+                                                    @else
+                                                        0%
+                                                    @endif
+                                                    "></div>
                                                 </div>
-                                                <span class="sum">2</span>
+                                                <span class="sum">
+                                                    @if (array_key_exists(4, $avgs))
+                                                        {{$avgs[4]['count']}}
+                                                    @else
+                                                        0
+                                                    @endif
+                                                </span>
                                             </li>
                                             <li>
                                                 <div class="rating-stars">
@@ -197,9 +241,21 @@
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
                                                 <div class="rating-progress">
-                                                    <div></div>
+                                                    <div style="width: 
+                                                    @if (array_key_exists(3, $avgs))
+                                                        {{$avgs[3]['avg']}}%
+                                                    @else
+                                                        0%
+                                                    @endif
+                                                    "></div>
                                                 </div>
-                                                <span class="sum">0</span>
+                                                <span class="sum">
+                                                    @if (array_key_exists(3, $avgs))
+                                                        {{$avgs[3]['count']}}
+                                                    @else
+                                                        0
+                                                    @endif
+                                                </span>
                                             </li>
                                             <li>
                                                 <div class="rating-stars">
@@ -210,9 +266,21 @@
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
                                                 <div class="rating-progress">
-                                                    <div></div>
+                                                    <div style="width: 
+                                                    @if (array_key_exists(2, $avgs))
+                                                        {{$avgs[2]['avg']}}%
+                                                    @else
+                                                        0%
+                                                    @endif
+                                                    "></div>
                                                 </div>
-                                                <span class="sum">0</span>
+                                                <span class="sum">
+                                                    @if (array_key_exists(2, $avgs))
+                                                        {{$avgs[2]['count']}}
+                                                    @else
+                                                        0
+                                                    @endif
+                                                </span>
                                             </li>
                                             <li>
                                                 <div class="rating-stars">
@@ -223,9 +291,21 @@
                                                     <i class="fa fa-star-o"></i>
                                                 </div>
                                                 <div class="rating-progress">
-                                                    <div></div>
+                                                    <div style="width: 
+                                                    @if (array_key_exists(1, $avgs))
+                                                        {{$avgs[1]['avg']}}%
+                                                    @else
+                                                        0%
+                                                    @endif
+                                                    "></div>
                                                 </div>
-                                                <span class="sum">0</span>
+                                                <span class="sum">
+                                                    @if (array_key_exists(1, $avgs))
+                                                        {{$avgs[1]['count']}}
+                                                    @else
+                                                        0
+                                                    @endif
+                                                </span>
                                             </li>
                                         </ul>
                                     </div>
@@ -236,61 +316,29 @@
                                 <div class="col-md-6">
                                     <div id="reviews">
                                         <ul class="reviews">
+                                            @foreach ($reviews as $item)
                                             <li>
                                                 <div class="review-heading">
-                                                    <h5 class="name">John</h5>
-                                                    <p class="date">27 DEC 2018, 8:0 PM</p>
+                                                    <h5 class="name">{{$item->author}}</h5>
+                                                    <p class="date">{{$item->created_at}}</p>
                                                     <div class="review-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o empty"></i>
+                                                        @for ($i = 0; $i < 5; $i++)
+                                                            @if ($i < $item->rating)
+                                                                <i class="fa fa-star"></i>
+                                                            @else
+                                                                <i class="fa fa-star-o"></i>
+                                                            @endif
+                                                        @endfor
                                                     </div>
                                                 </div>
                                                 <div class="review-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                                                    <p>{{$item->review}}</p>
                                                 </div>
                                             </li>
-                                            <li>
-                                                <div class="review-heading">
-                                                    <h5 class="name">John</h5>
-                                                    <p class="date">27 DEC 2018, 8:0 PM</p>
-                                                    <div class="review-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o empty"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="review-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="review-heading">
-                                                    <h5 class="name">John</h5>
-                                                    <p class="date">27 DEC 2018, 8:0 PM</p>
-                                                    <div class="review-rating">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o empty"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="review-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                </div>
-                                            </li>
+                                            @endforeach
                                         </ul>
                                         <ul class="reviews-pagination">
-                                            <li class="active">1</li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                            {{$reviews->links()}}
                                         </ul>
                                     </div>
                                 </div>
@@ -299,22 +347,26 @@
                                 <!-- Review Form -->
                                 <div class="col-md-3">
                                     <div id="review-form">
-                                        <form class="review-form">
-                                            <input class="input" type="text" placeholder="Your Name">
-                                            <input class="input" type="email" placeholder="Your Email">
-                                            <textarea class="input" placeholder="Your Review"></textarea>
-                                            <div class="input-rating">
-                                                <span>Your Rating: </span>
-                                                <div class="stars">
-                                                    <input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
-                                                    <input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
-                                                    <input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
-                                                    <input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
-                                                    <input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
+                                        @if (Auth::check())
+                                            <form class="review-form" action="{{route('uploadReview', $product->id)}}" method="POST">
+                                                @csrf
+                                                <textarea class="input" placeholder="Ваш отзыв" name="review_text"></textarea>
+                                                <div class="input-rating">
+                                                    <span>Оценка: </span>
+                                                    <div class="stars">
+                                                        <input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
+                                                        <input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
+                                                        <input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
+                                                        <input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
+                                                        <input id="star1" name="rating" value="1" type="radio" checked><label for="star1"></label>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <button class="primary-btn">Submit</button>
-                                        </form>
+                                                <button class="primary-btn">Отправить</button>
+                                            </form>
+                                        @else
+                                            <a type="button" class="primary-btn" data-toggle="modal" data-target="#loginFormModal"> Войти, чтобы оставить отзыв</a>
+                                        @endif
+                                        
                                     </div>
                                 </div>
                                 <!-- /Review Form -->

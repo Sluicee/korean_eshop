@@ -27,7 +27,7 @@
                     <button type="button" class="btn btn-xs btn-info btn-flat show_confirm edit_category edit_btn">Редактировать</button>
                     <button type="submit" class="btn btn-xs btn-success btn-flat show_confirm edit_category cat_new_name_disabled" data-toggle="tooltip" title='Delete'>Подтеврдить</button>
                     <button type="button" class="btn btn-xs btn-secondary btn-flat show_confirm edit_category cat_new_name_disabled cancel_btn">Отмена</button>
-                    <table class="table table-sm">
+                    <table class="table table-sm ">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>

@@ -13,20 +13,20 @@ class Product extends Model
     protected $table = 'products';
     public function images()
     {
-        return $this->hasMany('App\Models\Image', 'product_id');
+        return $this->hasMany('App\Models\Image', 'product_id'); // связь 1 к многим
     }
 
     public function category()
     {
-        return $this->belongsTo('App\Models\Category', 'category');
+        return $this->belongsTo('App\Models\Category', 'category'); // связь многие к 1
     }
     
-    public function scopeFilter(Builder $builder, QueryFilter $filters)
+    public function scopeFilter(Builder $builder, QueryFilter $filters) // применение фильтра
     {
         return $filters->apply($builder);
     }
     public function reviews()
     {
-        return $this->hasMany('App\Models\Review');
+        return $this->hasMany('App\Models\Review'); // связь 1 к многим
     }
 }

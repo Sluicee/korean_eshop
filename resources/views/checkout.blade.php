@@ -58,9 +58,9 @@
                         <input class="input" type="text" name="zipcode" placeholder="Почтовый индекс" required>
                     </div>
                     <div class="form-group">
-                        <input class="input" type="tel" name="tel" placeholder="Телефон" required>
+                        <input class="input" type="text" name="phone" placeholder="Телефон" required>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <div class="input-checkbox">
                             <input type="checkbox" id="create-account">
                             <label for="create-account">
@@ -68,7 +68,7 @@
                                 Сохранить адрес?
                             </label>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <!-- /Billing Details -->
 
@@ -94,14 +94,14 @@
                         @if (session('cart'))
                             @foreach(session('cart') as $id => $details)
                                 @if ($details['sale']!=0)
-                                    @php $total += $details['price'] - $details['price'] * ($details['sale'] / 100) * $details['quantity'] @endphp
+                                    @php $total += ($details['price'] - $details['price'] * ($details['sale'] / 100)) * $details['quantity'] @endphp
                                 @else
                                     @php $total += $details['price'] * $details['quantity'] @endphp
                                 @endif
                                 <div class="order-col">
                                     <div>{{$details['quantity']}}x {{$details['name']}}</div>
                                     @if ($details['sale']!=0)
-                                        <div>{{$details['price'] - $details['price'] * ($details['sale'] / 100) * $details['quantity'] }} руб.</div>
+                                        <div>{{($details['price'] - $details['price'] * ($details['sale'] / 100)) * $details['quantity'] }} руб.</div>
                                     @else
                                         <div>{{ $details['price'] * $details['quantity'] }} руб.</div>
                                     @endif
@@ -121,7 +121,7 @@
                 </div>
                 <div class="payment-method">
                     <div class="input-radio">
-                        <input type="radio" name="payment" id="payment-1">
+                        <input type="radio" name="payment" id="payment-1" checked>
                         <label for="payment-1">
                             <span></span>
                             Онлайн
@@ -142,7 +142,7 @@
                     </div>
                 </div>
                 <div class="input-checkbox">
-                    <input type="checkbox" id="terms">
+                    <input type="checkbox" id="terms" required>
                     <label for="terms">
                         <span></span>
                         Я прочитал <a href="#">условия</a>

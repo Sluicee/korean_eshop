@@ -23,7 +23,7 @@
                 <tbody>
                     @foreach ($orders as $order)
                     <tr>
-                        <td><a href="{{route('get_order', $order->id)}}">Заказ #{{$order->id}}</a></td>
+                        <td><a href="{{route('admin.get_order', $order->id)}}">Заказ #{{$order->id}}</a></td>
                         <td>{{$order->status}}</td>
                         <td>{{$order->payment_status}}</td>
                         <td>{{$order->total_price}} руб.</td>

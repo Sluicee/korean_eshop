@@ -24,7 +24,13 @@
                     @foreach ($orders as $order)
                     <tr>
                         <td><a href="{{route('get_order', $order->id)}}">Заказ #{{$order->id}}</a></td>
-                        <td class="btn btn-info">{{$order->status}}</td>
+                        @if ($order->status == 'В обработке')
+                            <td class="alert-primary">{{$order->status}}</td>
+                        @elseif ($order->status == 'Отменён')
+                            <td class="alert-danger">{{$order->status}}</td>
+                        @else
+                            <td class="alert-success">{{$order->status}}</td>
+                        @endif
                         <td>{{$order->payment_status}}</td>
                         <td>{{$order->total_price}} руб.</td>
                         <td>{{$order->created_at}}</td>

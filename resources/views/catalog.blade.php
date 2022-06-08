@@ -44,8 +44,7 @@
                                     <button type="button" class="btn btn-light" style="margin-top: 3px">{{$cat->name}}<small>({{$cat->products_count}})</small></button>
                                 @endif
                             </a>
-                        @endforeach
-                        
+                        @endforeach                       
 
                     </div>
                 </div>

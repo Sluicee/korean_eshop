@@ -129,7 +129,7 @@
                     <!-- product tab nav -->
                     <ul class="tab-nav">
                         <li class="active"><a data-toggle="tab" href="#tab1">Описание</a></li>
-                        <li><a data-toggle="tab" href="#tab3">Отзовы ({{count($reviews)}})</a></li>
+                        <li><a data-toggle="tab" href="#tab3">Отзовы ({{$reviews_count}})</a></li>
                     </ul>
                     <!-- /product tab nav -->
 
@@ -155,7 +155,7 @@
                                             <span>{{round($product->rating, 1)}}</span>
                                             <div class="rating-stars">
                                                 @for ($i = 0; $i < 5; $i++)
-                                                    @if ($i < $product->rating)
+                                                    @if ($i <= $product->rating-1)
                                                         <i class="fa fa-star"></i>
                                                     @else
                                                         <i class="fa fa-star-o"></i>

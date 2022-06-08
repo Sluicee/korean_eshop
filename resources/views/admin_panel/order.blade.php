@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('title-block')Заказ #{{$order->id}} @endsection
 
 @section('content')
@@ -55,8 +55,20 @@
                 @endforeach
                 <hr>
                 <h3>Сумма: {{$total}}</h3>
+
+                
             </div>
-            
+            <div class="buttons">
+                @if ($order->status == 'В обработке')
+                    <a class="alert alert-primary" href="{{route('admin.approveOrder', $order->id)}}">Подтвердить</a>
+                    <a class="alert alert-danger" href="{{route('admin.rejectOrder', $order->id)}}">Отклонить</a>
+                @elseif ($order->status == 'Подтверждён')
+                    <a class="alert alert-success" href="{{route('admin.sendOrder', $order->id)}}">Отправить</a>
+                    <a class="alert alert-danger" href="{{route('admin.rejectOrder', $order->id)}}">Отклонить</a>
+                @else
+                    <a class="alert alert-danger" href="{{route('admin.rejectOrder', $order->id)}}">Отклонить</a>
+                @endif
+            </div>
         </div>
         <!-- /row -->
     </div>

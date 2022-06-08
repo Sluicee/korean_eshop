@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use App\Models\Image;
 use App\Models\Order;
 use App\Models\Category;
-use Illuminate\Support\Facades\Log;
+use App\Models\Review;
 
 class AdminController extends Controller
 {
@@ -143,5 +144,44 @@ class AdminController extends Controller
     public function getOrders() {
         $orders = Order::all(); 
         return view('admin_panel.orders', ['orders' => $orders]);
+    }
+
+    public function getOrder($id){
+        $order = Order::find($id);
+        $cart = unserialize($order->cart);
+        return view('admin_panel.order', ['order' => $order, 'cart' => $cart]);
+    }
+
+    public function approveOrder($id) {
+        $order = Order::find($id);
+        $order->status = 'Подтверждён';
+        $order->save();
+        return redirect()->back();
+    }
+
+    public function sendOrder($id) {
+        $order = Order::find($id);
+        $order->status = 'Отправлен';
+        $order->save();
+        return redirect()->back();
+    }
+
+    public function rejectOrder($id) {
+        $order = Order::find($id);
+        $order->status = 'Отменён';
+        $order->save();
+        return redirect()->back();
+    }
+
+    public function approveReview($review_id, $product_id) {
+        $product = new ProductController;
+        $product->updateProductRating($product_id);
+        return redirect()->back();
+    }
+
+    public function rejectReview($review_id) {
+        $product = new ProductController;
+        $product->updateProductRating($product_id);
+        return redirect()->back();
     }
 }

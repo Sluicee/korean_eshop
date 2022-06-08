@@ -11,11 +11,12 @@
             <a href="{{ route('admin.uploadProduct') }}" class="btn btn-success"><i class="fa fa-angle-left"></i> Добавить новый продукт</a>
         </div>
         <div class="row">
-            <table id="cart" class="table table-hover" style="overflow:hidden;">
+            <table id="cart" class="table table-hover dataTable" style="overflow:hidden;">
                 <thead>
                     <tr>
                         <th >id</th>
                         <th >Товар</th>
+                        <th >Категория</th>
                         <th  class="text-center">Изображение</th>
                         <th  class="text-center">Цена, руб.</th>
                         <th  class="text-center">Скидка, %</th>
@@ -31,6 +32,8 @@
                             <td data-th="ID" class="text-center">{{ $item->id }}</td>
                             <td data-th="Product">
                                 <p class="nomargin">{{ $item->name }}</p>
+                            </td>
+                            <td>
                                 @if (App\Models\Category::find($item->category) != null)
                                     <p class="product-category nomargin">{{ App\Models\Category::find($item->category)->name }}</p>
                                 @else
@@ -53,6 +56,9 @@
                                 <div class="tooltip_bs"  data-toggle="tooltip" title="{!! $item->short_description !!}">Краткое описание
                                     {{-- <span class="tooltiptext">{!! $item->short_description !!}</span> --}}
                                 </div>   
+                                <div class="tooltip_bs"  data-toggle="tooltip" title="{!! $item->description !!}">Описание
+                                    {{-- <span class="tooltiptext">{!! $item->short_description !!}</span> --}}
+                                </div> 
                             </td>
                             <td class="actions" data-th="">
                                 @if (App\Models\Category::find($item->category) != null)

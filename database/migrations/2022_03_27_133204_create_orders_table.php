@@ -17,20 +17,16 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->text('cart');
-            $table->integer('total_price');
-            $table->string('familiya');
-            $table->string('imya');
-            $table->string('otchestvo')->nullable();
-            $table->string('address')->nullable();
-            $table->string('country')->nullable();
-            $table->string('city')->nullable();
-            $table->string('zipcode')->nullable();
-            $table->string('phone')->nullable();
+            $table->float('total_price');
+            $table->string('fio', 100);
+            $table->string('address', 100)->nullable();
+            $table->string('zipcode', 10)->nullable();
+            $table->string('phone', 20)->nullable();
             $table->text('notes')->nullable();
             $table->string('payment_id')->nullable();
-            $table->string('status')->nullable()->default('в обработке');
-            $table->string('payment_status')->nullable()->default('Не оплачен');
-            $table->string('trackcode')->nullable();
+            $table->string('status', 50)->nullable()->default('В обработке');
+            $table->string('payment_status', 50)->nullable()->default('Не оплачен');
+            $table->string('trackcode', 50)->nullable();
             $table->timestamps();
         });
     }

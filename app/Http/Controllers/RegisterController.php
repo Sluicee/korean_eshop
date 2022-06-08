@@ -21,6 +21,6 @@ class RegisterController extends Controller
 
         auth()->login($user);
 
-        return redirect()->back()->with('success', 'Отзыв отправлен!');
+        return redirect()->back()->with('success', 'Успешная регистрация!');
     }
 }

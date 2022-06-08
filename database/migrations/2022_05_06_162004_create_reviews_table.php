@@ -20,6 +20,7 @@ return new class extends Migration
             $table->longText('review')->nullable();
             $table->string('author', 100)->nullable();
             $table->integer('rating')->default(0)->nullable();
+            $table->integer('status')->default(0)->nullable(); // 0 - на проверке, 1 - проверен, 2 - удален
             $table->timestamps();
         });
     }

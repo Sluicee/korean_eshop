@@ -13,9 +13,9 @@
                 <img src="/img/logo_black.svg" alt="">
                 <h1 class="h3 mb-3 font-weight-normal">Авторизация</h1>
                 <label for="inputEmail" class="sr-only">Email</label>
-                <input type="email" id="inputEmailLogin" name="email" class="form-control" placeholder="Эл. почта" required="" autofocus="">
+                <input type="email" id="inputEmailLogin" name="email" class="form-control" placeholder="Эл. почта" required="" autofocus="" maxlength="50">
                 <label for="inputPassword" class="sr-only">Пароль</label>
-                <input type="password" id="inputPasswordLogin" name="password" class="form-control" placeholder="Пароль" required="">
+                <input type="password" id="inputPasswordLogin" name="password" class="form-control" placeholder="Пароль" required="" maxlength="50">
             </div>
             <div class="modal-footer">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>

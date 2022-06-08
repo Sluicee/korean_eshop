@@ -14,11 +14,12 @@ class CheckRole
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $role)
+    public function handle(Request $request, Closure $next, ... $roles) // принимает Request, требуемую страницу и роли, которые могут открыть эту страницу
     {
-        if (! $request->user()->hasRole($role)) {
-            abort(401, 'This action is unauthorized.');
+        foreach($roles as $role) { //проверка наличия любой роли у пользователя
+            if($request->user()->hasRole($role)) // если есть то пропускает на страницу
+                return $next($request);
         }
-        return $next($request);
+        abort(401, 'Доступ к данной странице ограничен.'); //иначе нет
     }
 }

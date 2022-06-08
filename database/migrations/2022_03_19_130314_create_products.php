@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 100);
             $table->integer('category')->default(0)->nullable();
-            $table->float('rating')->default(0)->nullable();
-            $table->float('price')->default(0)->nullable();
+            $table->float('rating', 5)->default(0)->nullable();
+            $table->float('price', 5)->default(0)->nullable();
             $table->integer('sale')->default(0)->nullable();
             $table->boolean('stock')->default(false);
             $table->longText('description')->nullable();

@@ -24,15 +24,11 @@ class OrderController extends Controller
     
         $order = new Order;
         $order->user_id = Auth::user()->id;
-        $order->familiya = $request->familiya;
+        $order->fio = $request->familiya." ".$request->imya." ".$request->otchestvo;
         $order->total_price = $request->total_price;
-        $order->imya = $request->imya;
-        $order->otchestvo = $request->otchestvo;
-        $order->address = $request->address;
-        $order->country = $request->country;
-        $order->city = $request->city;
+        $order->address = $request->address." ".$request->country." ".$request->city;
         $order->zipcode = $request->zipcode;
-        $order->phone = $request->tel;
+        $order->phone = $request->phone;
         $order->notes = $request->notes;
 
         $oldCart = $request->session()->get('cart');
@@ -53,4 +49,6 @@ class OrderController extends Controller
         $cart = unserialize($order->cart);
         return view('order', ['order' => $order, 'cart' => $cart]);
     }
+
+    
 }

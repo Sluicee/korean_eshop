@@ -24,7 +24,7 @@
                     @if(session('cart'))
                         @foreach(session('cart') as $id => $details)
                             @if ($details['sale']!=0)
-                                @php $total += $details['price'] - $details['price'] * ($details['sale'] / 100) * $details['quantity'] @endphp
+                                @php $total += ($details['price'] - $details['price'] * ($details['sale'] / 100)) * $details['quantity'] @endphp
                             @else
                                 @php $total += $details['price'] * $details['quantity'] @endphp
                             @endif
@@ -48,7 +48,7 @@
                                     <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity update-cart" />
                                 </td>
                                 @if ($details['sale']!=0)
-                                    <td data-th="Subtotal" class="text-center">{{ $details['price'] - $details['price'] * ($details['sale'] / 100) * $details['quantity'] }} руб.</td>
+                                    <td data-th="Subtotal" class="text-center">{{ ($details['price'] - $details['price'] * ($details['sale'] / 100)) * $details['quantity'] }} руб.</td>
                                 @else
                                     <td data-th="Subtotal" class="text-center">{{ $details['price'] * $details['quantity'] }} руб.</td>
                                 @endif
@@ -68,9 +68,9 @@
                             <a href="{{ route('home') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Продолжить покупки</a>
                             @if (session('cart') != [])
                                 @if(Auth::check())
-                                    <a href="{{ route('checkout') }}" class="btn btn-success"><i class="fa fa-angle-left"></i> Перейти к оформлению</a>
+                                    <a href="{{ route('checkout') }}" class="btn btn-success"><i class="fa fa-angle-right"></i> Перейти к оформлению</a>
                                 @else
-                                    <a class="btn btn-success" type="button" data-toggle="modal" data-target="#loginFormModal"><i class="fa fa-angle-left"></i> Перейти к оформлению</a>
+                                    <a class="btn btn-success" type="button" data-toggle="modal" data-target="#loginFormModal"><i class="fa fa-angle-right"></i> Перейти к оформлению</a>
                                 @endif
                             @endif
                         </td>

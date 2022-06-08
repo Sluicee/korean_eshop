@@ -30,6 +30,7 @@ Route::post('/checkout/pass', 'App\Http\Controllers\OrderController@checkOut')->
 
 Route::get('/orders/order_{id}', 'App\Http\Controllers\OrderController@getOrder')->name('get_order')->middleware('auth');
 
+
 Route::name('cart.')->group(function () {
     Route::get('/cart', 'App\Http\Controllers\MainController@cartList')->name('list');
     Route::post('/cart/store/{id}', 'App\Http\Controllers\CartController@addToCart')->name('store');
@@ -46,23 +47,27 @@ Route::name('wishlist.')->group(function () {
 
 // Admin Panel
 
-Route::name('admin.')->group(function () {
-    Route::get('/admin', 'App\Http\Controllers\AdminController@openAdmin')->name('panel')->middleware('auth')->middleware('role:ADMIN');
+Route::middleware('auth')->name('admin.')->group(function () {
+    Route::get('/admin', 'App\Http\Controllers\AdminController@openAdmin')->name('panel')->middleware('role:ADMIN');
 
-    Route::get('/admin/catalog', 'App\Http\Controllers\AdminController@openAdminEditProducts')->name('editProducts')->middleware('auth')->middleware('role:ADMIN');
-    Route::get('/admin/catalog/product{id}/remove', 'App\Http\Controllers\AdminController@removeProduct')->name('removeProduct')->middleware('auth')->middleware('role:ADMIN');
-    Route::get('/admin/catalog/product{id}/edit', 'App\Http\Controllers\AdminController@openEditProduct')->name('editProduct')->middleware('auth')->middleware('role:ADMIN');
-    Route::post('/admin/catalog/product{id}/edit/submit', 'App\Http\Controllers\AdminController@updateProduct')->name('editProductSubmit')->middleware('auth')->middleware('role:ADMIN');
+    Route::get('/admin/catalog', 'App\Http\Controllers\AdminController@openAdminEditProducts')->name('editProducts')->middleware('role:ADMIN');
+    Route::get('/admin/catalog/product{id}/remove', 'App\Http\Controllers\AdminController@removeProduct')->name('removeProduct')->middleware('role:ADMIN');
+    Route::get('/admin/catalog/product{id}/edit', 'App\Http\Controllers\AdminController@openEditProduct')->name('editProduct')->middleware('role:ADMIN');
+    Route::post('/admin/catalog/product{id}/edit/submit', 'App\Http\Controllers\AdminController@updateProduct')->name('editProductSubmit')->middleware('role:ADMIN');
 
-    Route::get('/admin/catalog/new', 'App\Http\Controllers\AdminController@openAdminUploadProduct')->name('uploadProduct')->middleware('auth')->middleware('role:ADMIN');
-    Route::post('/admin/catalog/new/productSubmit', 'App\Http\Controllers\AdminController@productSubmit')->name('productSubmit')->middleware('auth')->middleware('role:ADMIN');
+    Route::get('/admin/catalog/new', 'App\Http\Controllers\AdminController@openAdminUploadProduct')->name('uploadProduct')->middleware('role:ADMIN');
+    Route::post('/admin/catalog/new/productSubmit', 'App\Http\Controllers\AdminController@productSubmit')->name('productSubmit')->middleware('role:ADMIN');
 
-    Route::get('/admin/categories', 'App\Http\Controllers\AdminController@openAdminEditCategories')->name('editCategories')->middleware('auth')->middleware('role:ADMIN');
-    Route::post('/admin/categories/categorySubmit', 'App\Http\Controllers\AdminController@categorySubmit')->name('categorySubmit')->middleware('auth')->middleware('role:ADMIN');
-    Route::get('/admin/categories/{id}/categoryDelete', 'App\Http\Controllers\AdminController@categoryDelete')->name('categoryDelete')->middleware('auth')->middleware('role:ADMIN');
-    Route::get('/admin/categories/categoryUpdate', 'App\Http\Controllers\AdminController@categoryUpdate')->name('categoryUpdate')->middleware('auth')->middleware('role:ADMIN');
+    Route::get('/admin/categories', 'App\Http\Controllers\AdminController@openAdminEditCategories')->name('editCategories')->middleware('role:ADMIN');
+    Route::post('/admin/categories/categorySubmit', 'App\Http\Controllers\AdminController@categorySubmit')->name('categorySubmit')->middleware('role:ADMIN');
+    Route::get('/admin/categories/{id}/categoryDelete', 'App\Http\Controllers\AdminController@categoryDelete')->name('categoryDelete')->middleware('role:ADMIN');
+    Route::get('/admin/categories/categoryUpdate', 'App\Http\Controllers\AdminController@categoryUpdate')->name('categoryUpdate')->middleware('role:ADMIN');
 
-    Route::get('/admin/orders', 'App\Http\Controllers\AdminController@getOrders')->name('orders')->middleware('auth')->middleware('role:ADMIN');
+    Route::get('/admin/orders', 'App\Http\Controllers\AdminController@getOrders')->name('orders')->middleware('role:ADMIN');
+    Route::get('/admin/orders/order_{id}', 'App\Http\Controllers\AdminController@getOrder')->name('get_order')->middleware('auth');
+    Route::get('/orders/order_{id}/approve', 'App\Http\Controllers\AdminController@approveOrder')->name('approveOrder')->middleware('auth');
+    Route::get('/orders/order_{id}/send', 'App\Http\Controllers\AdminController@sendOrder')->name('sendOrder')->middleware('auth');
+    Route::get('/orders/order_{id}/reject', 'App\Http\Controllers\AdminController@rejectOrder')->name('rejectOrder')->middleware('auth');
 });
 
 Route::name('user.')->group(function()

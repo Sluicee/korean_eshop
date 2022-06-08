@@ -13,11 +13,11 @@
               <img src="/img/logo_black.svg" alt="">
               <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
               <label for="inputName" class="sr-only">ФИО</label>
-              <input type="text" id="inputName" name="name" class="form-control" placeholder="ФИО" required="" autofocus="">
+              <input type="text" id="inputName" name="name" class="form-control" placeholder="ФИО" required="" autofocus="" maxlength="100">
               <label for="inputEmail" class="sr-only">Email</label>
-              <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required="" autofocus="">
+              <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required="" autofocus="" maxlength="50">
               <label for="inputPassword" class="sr-only">Пароль</label>
-              <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Пароль" required="">
+              <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Пароль" required="" maxlength="50" pattern="[a-z]{6,50}">
               <label for="inputPassword" class="sr-only">Подтверждение пароля</label>
               <input type="password" id="inputPasswordConf" name="password_confirmation" class="form-control" placeholder="Подтверждение пароля" required="">
           </div>
